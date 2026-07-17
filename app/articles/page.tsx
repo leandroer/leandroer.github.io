@@ -7,6 +7,7 @@ export const metadata: Metadata = {
 };
 
 const articles = [
+  { date: "31 JUL 2026", kind: "AI SECURITY", title: "Guardrails that can say no: OPA policy enforcement for AI agents", desc: "A practical architecture for independent policy decisions at agent tool boundaries, with approval binding, failure behavior, and audit requirements.", time: "9 MIN", href: "/articles/opa-policy-guardrails-for-ai-agents" },
   { date: "17 JUL 2026", kind: "AI SECURITY", title: "Incident response for autonomous AI agents", desc: "A practical framework for scoping identity, memory, tools, and delegated actions when an AI workflow goes wrong.", time: "8 MIN", href: "/articles/responding-to-agent-incidents" },
   { date: "03 JUL 2026", kind: "DETECTION", title: "What to log before your first AI incident", desc: "The minimum viable telemetry model for prompts, retrieval, policy decisions, tool execution, and human approvals.", time: "6 MIN", href: "/articles/what-to-log-before-your-first-ai-incident" },
   { date: "19 JUN 2026", kind: "PLAYBOOK", title: "Ransomware containment is a business decision", desc: "A decision framework for isolation when every option carries operational cost.", time: "7 MIN", href: "/articles/ransomware-containment-is-a-business-decision" },
