@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Ransomware blast radius and containment architecture</title><desc id="desc">A security architecture separating workload, control, and recovery planes, showing attacker paths and five containment choke points.</desc>
+  <defs><style>.bg{fill:#0d2749}.grid{stroke:#fff;stroke-opacity:.045}.zone{fill:#102e52;stroke:#4f6f93}.zl{fill:#91a9c3;font:700 12px Menlo,monospace;letter-spacing:1.5px}.node{fill:#15385f;stroke:#6383a5}.control{fill:#183f6d;stroke:#86b5e8}.recovery{fill:#163d55;stroke:#74b9d4}.impact{fill:#4a2f41;stroke:#e39587}.t{fill:#f4f8fc;font:700 16px Arial,sans-serif}.s{fill:#aabed2;font:12px Arial,sans-serif}.path{fill:none;stroke:#e39587;stroke-width:2;marker-end:url(#risk)}.dep{fill:none;stroke:#7896b5;stroke-width:1.5;marker-end:url(#normal)}.cut{stroke:#9dccff;stroke-width:4}.cl{fill:#cfe7ff;font:700 11px Menlo,monospace}.note{fill:#91a9c3;font:12px Arial,sans-serif}</style><pattern id="g" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" class="grid" fill="none"/></pattern><marker id="risk" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0l8 4-8 4z" fill="#e39587"/></marker><marker id="normal" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0l8 4-8 4z" fill="#7896b5"/></marker></defs>
+  <rect width="1200" height="720" class="bg"/><rect width="1200" height="720" fill="url(#g)"/>
+  <text x="50" y="45" class="zl">RANSOMWARE CONTAINMENT / REFERENCE ARCHITECTURE</text>
+  <rect x="35" y="70" width="380" height="545" class="zone"/><text x="55" y="99" class="zl">WORKLOAD / IMPACT PLANE</text>
+  <rect x="430" y="70" width="325" height="545" class="zone"/><text x="450" y="99" class="zl">CONTROL PLANE</text>
+  <rect x="770" y="70" width="395" height="545" class="zone"/><text x="790" y="99" class="zl">RECOVERY / TRUST PLANE</text>
+  <g><rect x="62" y="132" width="150" height="72" class="impact"/><text x="79" y="161" class="t">PATIENT ZERO</text><text x="79" y="184" class="s">endpoint / initial access</text></g>
+  <g><rect x="250" y="132" width="138" height="72" class="node"/><text x="267" y="161" class="t">USER FLEET</text><text x="267" y="184" class="s">EDR scope</text></g>
+  <g><rect x="62" y="282" width="150" height="72" class="node"/><text x="79" y="311" class="t">FILE SERVICES</text><text x="79" y="334" class="s">SMB / shared data</text></g>
+  <g><rect x="250" y="282" width="138" height="72" class="node"/><text x="267" y="311" class="t">APP SERVERS</text><text x="267" y="334" class="s">service identities</text></g>
+  <g><rect x="62" y="476" width="326" height="72" class="node"/><text x="79" y="505" class="t">CRITICAL OPERATIONS</text><text x="79" y="528" class="s">clinical / industrial / revenue dependencies</text></g>
+  <g><rect x="458" y="132" width="269" height="72" class="control"/><text x="476" y="161" class="t">IDENTITY CONTROL PLANE</text><text x="476" y="184" class="s">AD · IdP · sessions · privileged roles</text></g>
+  <g><rect x="458" y="282" width="126" height="72" class="control"/><text x="475" y="311" class="t">MGMT PLANE</text><text x="475" y="334" class="s">EDR · RMM · NAC</text></g>
+  <g><rect x="601" y="282" width="126" height="72" class="control"/><text x="618" y="311" class="t">VIRTUALIZE</text><text x="618" y="334" class="s">hypervisor</text></g>
+  <g><rect x="458" y="476" width="269" height="72" class="control"/><text x="476" y="505" class="t">NETWORK ENFORCEMENT</text><text x="476" y="528" class="s">segments · egress · DNS · VPN</text></g>
+  <g><rect x="800" y="132" width="335" height="72" class="recovery"/><text x="818" y="161" class="t">BACKUP CONTROL PLANE</text><text x="818" y="184" class="s">immutability · vault · administrative audit</text></g>
+  <g><rect x="800" y="282" width="335" height="72" class="recovery"/><text x="818" y="311" class="t">CLEAN ADMINISTRATION</text><text x="818" y="334" class="s">PAW · break-glass · isolated credentials</text></g>
+  <g><rect x="800" y="476" width="335" height="72" class="recovery"/><text x="818" y="505" class="t">RECOVERY ENCLAVE</text><text x="818" y="528" class="s">known-good images · validation · staging</text></g>
+  <path d="M212 168h38M137 204v78M319 204v78M388 168h70M388 318h70M388 318c35 0 35 194 70 194M727 168h73M727 318h73" class="path"/>
+  <path d="M968 354v122M727 512h73M225 476V354M521 354v122" class="dep"/>
+  <g><line x1="231" y1="149" x2="231" y2="187" class="cut"/><text x="213" y="128" class="cl">01 ISOLATE HOST</text></g>
+  <g><line x1="420" y1="149" x2="420" y2="187" class="cut"/><text x="391" y="128" class="cl">02 REVOKE IDENTITY</text></g>
+  <g><line x1="780" y1="149" x2="780" y2="187" class="cut"/><text x="753" y="128" class="cl">03 PROTECT BACKUP</text></g>
+  <g><line x1="421" y1="493" x2="421" y2="531" class="cut"/><text x="393" y="571" class="cl">04 SEGMENT PATHS</text></g>
+  <g><line x1="780" y1="493" x2="780" y2="531" class="cut"/><text x="784" y="571" class="cl">05 STAGE RECOVERY</text></g>
+  <line x1="50" y1="648" x2="1150" y2="648" stroke="#4f6f93"/><text x="50" y="679" class="note">The encrypted endpoint is evidence. Identity, management, virtualization, network, and backup planes determine whether the attacker can still operate.</text>
+</svg>
