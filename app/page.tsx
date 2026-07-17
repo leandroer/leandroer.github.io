@@ -62,9 +62,9 @@ export default function Home() {
       </section>
 
       <section className="section latest">
-        <div className="section-label"><span>03 / FIELD NOTES</span><span>BI-WEEKLY ANALYSIS</span></div>
+        <div className="section-label"><span>03 / FIELD NOTES</span></div>
         <div className="featured-article"><div className="article-visual"><span>THREAT MODEL / 005</span><div className="agent-map"><i/><i/><i/><b>AGENT</b></div></div><div className="article-copy"><p className="eyebrow">LATEST · AI SECURITY · 8 MIN READ</p><h2>Incident response for autonomous AI agents</h2><p>Traditional containment assumes a system boundary. Agents blur it. A practical framework for scoping identity, memory, tools, and delegated actions when an AI workflow goes wrong.</p><Link className="text-link" href="/articles/responding-to-agent-incidents">Read field note <span>→</span></Link></div></div>
-        <div className="publish-note"><div><strong>Publish every two weeks.</strong><span>Articles live as simple content files—easy to draft, review, schedule, and share.</span></div><Link href="/articles">Browse all articles ↗</Link></div>
+        <div className="publish-note"><div><span>Articles live as simple content files—easy to draft, review, schedule, and share.</span></div><Link href="/articles">Browse all articles ↗</Link></div>
       </section>
 
       <footer><div className="brand"><span className="brand-mark">LR</span><span>INFOSEC<span className="brand-dot">.</span>LAB</span></div><p>Independent notes on AI security & incident response.</p><div><a href="https://github.com/leandroer" rel="noopener noreferrer">GitHub</a><a href="mailto:hello@lrinfosec.com">Contact</a></div><small>© 2026 LR InfoSec · Knowledge is a defensive control.</small></footer>
