@@ -1,6 +1,6 @@
 # LR InfoSec Lab
 
-The source for [leandroer.github.io](https://leandroer.github.io): open field
+The source for [lrinfosec.com](https://lrinfosec.com): open field
 notes, tested playbooks, and technical analysis for AI security and incident
 response practitioners.
 

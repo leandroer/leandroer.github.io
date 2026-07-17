@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://leandroer.github.io",
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://lrinfosec.com",
   ),
   title: { default: "LR InfoSec Lab — AI Security & Incident Response", template: "%s · LR InfoSec Lab" },
   description: "Open field notes, tested playbooks, and technical analysis for AI security and incident response practitioners.",
