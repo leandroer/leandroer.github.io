@@ -19,7 +19,7 @@ export default function Home() {
       <header className="site-header">
         <Link className="brand" href="/" aria-label="LR InfoSec home"><span className="brand-mark">LR</span><span>INFOSEC<span className="brand-dot">.</span>LAB</span></Link>
         <nav aria-label="Primary navigation">
-          <a href="#knowledge">Knowledge</a><a href="#playbooks">Playbooks</a><Link href="/articles">Articles</Link><a href="#about">About</a>
+          <a href="#knowledge">Knowledge</a><a href="/IncidentResponse/">Framework</a><a href="#playbooks">Playbooks</a><Link href="/articles">Articles</Link><a href="#about">About</a>
         </nav>
         <Link className="header-cta" href="/articles">Read the field notes <span>↗</span></Link>
       </header>
@@ -53,6 +53,11 @@ export default function Home() {
       <section className="playbook-section" id="playbooks">
         <div className="section-label light"><span>02 / RESPONSE PLAYBOOKS</span><span>OPERATOR-READY</span></div>
         <div className="playbook-heading"><h2>When the signal is real,<br/><em>reduce uncertainty.</em></h2><p>Prescriptive starting points with explicit assumptions. Adapt them to your environment, then validate them in tabletop exercises.</p></div>
+        <a className="framework-feature" href="/IncidentResponse/" aria-label="Explore the Incident Detection and Response Framework">
+          <div><span className="framework-kicker">STANDALONE OPERATIONAL RESOURCE</span><h3>Incident Detection &amp;<br/>Response Framework</h3></div>
+          <p>A structured practitioner guide to preparation, detection, triage, containment, eradication, recovery, and lessons learned.</p>
+          <span className="framework-link">Explore the framework <b>↗</b></span>
+        </a>
         <div className="playbook-list">{playbooks.map((p) => <article key={p.code}><span className="code">{p.code}</span><div><h3>{p.title}</h3><p>{p.desc}</p></div><div className="play-meta"><span>FIRST ACTION</span><b>{p.time}</b></div><div className="play-meta"><span>SEVERITY</span><b className={p.level === "Critical" ? "critical" : "high"}>{p.level}</b></div><span className="play-arrow">↗</span></article>)}</div>
       </section>
 
