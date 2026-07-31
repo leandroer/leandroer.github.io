@@ -63,7 +63,7 @@ export default function Home() {
 
       <section className="section latest">
         <div className="section-label"><span>03 / FIELD NOTES</span></div>
-        <div className="featured-article"><div className="article-visual"><span>THREAT MODEL / 005</span><div className="agent-map"><i/><i/><i/><b>AGENT</b></div></div><div className="article-copy"><p className="eyebrow">LATEST · AI SECURITY · 8 MIN READ</p><h2>Incident response for autonomous AI agents</h2><p>Traditional containment assumes a system boundary. Agents blur it. A practical framework for scoping identity, memory, tools, and delegated actions when an AI workflow goes wrong.</p><Link className="text-link" href="/articles/responding-to-agent-incidents">Read field note <span>→</span></Link></div></div>
+        <div className="featured-article"><div className="article-visual"><span>POLICY ARCHITECTURE / 006</span><div className="agent-map"><i/><i/><i/><b>OPA</b></div></div><div className="article-copy"><p className="eyebrow">LATEST · AI SECURITY · 9 MIN READ</p><h2>Guardrails that can say no</h2><p>A practical architecture for independent OPA policy decisions at agent tool boundaries, with approval binding, failure behavior, and audit requirements.</p><Link className="text-link" href="/articles/opa-policy-guardrails-for-ai-agents">Read field note <span>→</span></Link></div></div>
         <div className="publish-note"><div><span>Articles live as simple content files—easy to draft, review, schedule, and share.</span></div><Link href="/articles">Browse all articles ↗</Link></div>
       </section>
 
