@@ -33,12 +33,12 @@ export default function Home() {
           <div className="trust-line"><span>Independent</span><span>Evidence-led</span><span>Built for defenders</span></div>
         </div>
         <div className="signal-panel architect-board" aria-label="Current research notebook">
-          <div className="panel-head"><span>WORKING NOTES / 2026-07</span><span className="status">LAST UPDATED 17 JUL</span></div>
-          <div className="board-title"><span>CURRENT FOCUS</span><h2>Agent incident<br/>response</h2><p>Where traditional containment breaks when software can reason, delegate, and act.</p></div>
+          <div className="panel-head"><span>WORKING NOTES / 2026-08</span><span className="status">LAST UPDATED 14 AUG</span></div>
+          <div className="board-title"><span>CURRENT FOCUS</span><h2>Data before<br/>retrieval</h2><p>Preserving ownership, authorization, retention, and tenant boundaries through the RAG data plane.</p></div>
           <div className="board-rule" />
-          <div className="board-grid"><div><small>01</small><b>Identity</b><span>Who actually acted?</span></div><div><small>02</small><b>Memory</b><span>What context persisted?</span></div><div><small>03</small><b>Tools</b><span>What changed downstream?</span></div><div><small>04</small><b>Instructions</b><span>Which input won?</span></div></div>
-          <div className="margin-note">review assumption:<br/><strong>conversation ≠ evidence</strong></div>
-          <div className="panel-foot"><span>NOTE / 005</span><span>STATUS / PUBLISHED</span><span>READ / 8 MIN</span></div>
+          <div className="board-grid"><div><small>01</small><b>Owner</b><span>Who approves AI use?</span></div><div><small>02</small><b>Policy</b><span>Can this identity retrieve?</span></div><div><small>03</small><b>Tenant</b><span>Where is the boundary?</span></div><div><small>04</small><b>Lifecycle</b><span>What must be revoked?</span></div></div>
+          <div className="margin-note">control point:<br/><strong>similarity ≠ authority</strong></div>
+          <div className="panel-foot"><span>NOTE / 007</span><span>STATUS / PUBLISHED</span><span>READ / 12 MIN</span></div>
         </div>
       </section>
 
@@ -63,7 +63,7 @@ export default function Home() {
 
       <section className="section latest">
         <div className="section-label"><span>03 / FIELD NOTES</span></div>
-        <div className="featured-article"><div className="article-visual"><span>POLICY ARCHITECTURE / 006</span><div className="agent-map"><i/><i/><i/><b>OPA</b></div></div><div className="article-copy"><p className="eyebrow">LATEST · AI SECURITY · 9 MIN READ</p><h2>Guardrails that can say no</h2><p>A practical architecture for independent OPA policy decisions at agent tool boundaries, with approval binding, failure behavior, and audit requirements.</p><Link className="text-link" href="/articles/opa-policy-guardrails-for-ai-agents">Read field note <span>→</span></Link></div></div>
+        <div className="featured-article"><div className="article-visual"><span>RAG DATA PLANE / 007</span><div className="agent-map"><i/><i/><i/><b>DATA</b></div></div><div className="article-copy"><p className="eyebrow">LATEST · AI SECURITY · 12 MIN READ</p><h2>Label before retrieval</h2><p>A practical control architecture for preserving ownership, classification, authorization, retention, and tenant boundaries through RAG pipelines and agent memory.</p><Link className="text-link" href="/articles/label-before-retrieval">Read field note <span>→</span></Link></div></div>
         <div className="publish-note"><div><span>Articles live as simple content files—easy to draft, review, schedule, and share.</span></div><Link href="/articles">Browse all articles ↗</Link></div>
       </section>
 
