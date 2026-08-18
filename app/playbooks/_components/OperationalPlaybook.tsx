@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { GuideProvenance } from "../../components/GuideProvenance";
 
 export type Playbook = {
   code: string;
@@ -75,11 +76,19 @@ export const playbooks: Record<string, Playbook> = {
 
 export function OperationalPlaybook({ playbook }: { playbook: Playbook }) {
   const sections = [["Contain", playbook.contain], ["Eradicate", playbook.eradicate], ["Recover", playbook.recover]] as const;
+  const referenceBasis: Record<string,string[]> = {
+    "IR-01": ["NIST SP 800-61 Rev. 3 incident-response guidance", "CISA ransomware response guidance", "MITRE ATT&CK Enterprise techniques"],
+    "IR-02": ["NIST SP 800-61 Rev. 3", "CISA guidance for phishing and business email compromise", "MITRE ATT&CK identity and email techniques"],
+    "IR-03": ["NIST SP 800-61 Rev. 3", "Cloud-provider identity and audit guidance", "MITRE ATT&CK Cloud techniques"],
+    "IR-04": ["NIST SP 800-61 Rev. 3", "NIST CSF 2.0", "Applicable privacy, contractual, and breach-notification requirements"],
+    "IR-06": ["NIST SP 800-61 Rev. 3", "CISA malware analysis and containment guidance", "MITRE ATT&CK Enterprise techniques"],
+  };
   return <main className="guide-page"><header className="site-header"><Link className="brand" href="/" aria-label="LR InfoSec home"><span className="brand-mark">LR</span><span>INFOSEC<span className="brand-dot">.</span>LAB</span></Link><nav aria-label="Primary navigation"><Link href="/IncidentResponse/">Framework</Link><Link href="/#playbooks">Playbooks</Link><Link href="/ai-security-ir">AI Security IR</Link><Link href="/repository-compromise">Repository IR</Link></nav><Link className="header-cta" href="/#playbooks">All playbooks ↗</Link></header><section className="guide-hero"><p className="eyebrow"><span className="live-dot"/>OPERATIONAL PLAYBOOK · {playbook.code}</p><h1>{playbook.title}</h1><p className="dek">{playbook.summary}</p><div className="operator-meta"><span>SEVERITY / {playbook.severity.toUpperCase()}</span><span>FIRST ACTION / {playbook.firstAction.toUpperCase()}</span><span>FORMAT / PRINT-READY</span></div><div className="guide-nav"><a href="#recognize">Recognize</a><a href="#evidence">Evidence</a><a href="#first-15">First 15 minutes</a><a href="#procedure">Procedure</a><a href="#gates">Decision gates</a></div></section><div className="guide-content">
     <section className="guide-section" id="recognize"><h2>Recognize and declare</h2><p className="intro">Treat these signals as an incident when they cross an authorization, confidentiality, integrity, availability, or safety boundary.</p><ul className="operator-list">{playbook.triggers.map(x=><li key={x}>{x}</li>)}</ul></section>
     <section className="guide-section" id="evidence"><h2>Preserve the evidence</h2><p className="intro">Collect authoritative records before destructive cleanup whenever operationally safe. Record source, collector, UTC time, integrity hash, access, and retention decision.</p><ul className="operator-list">{playbook.evidence.map(x=><li key={x}>{x}</li>)}</ul></section>
     <section className="playbook-box" id="first-15"><p className="eyebrow">{playbook.code} · FIRST 15 MINUTES</p><h2>Reduce immediate uncertainty</h2><ol>{playbook.first15.map(x=><li key={x}>{x}</li>)}</ol></section>
     <section className="guide-section" id="procedure"><h2>Contain → eradicate → recover</h2><div className="phase-grid">{sections.map(([title,items],i)=><article className="phase-card" key={title}><small>PHASE / 0{i+1}</small><h3>{title}</h3><ul className="operator-list">{items.map(x=><li key={x}>{x}</li>)}</ul></article>)}</div></section>
     <section className="guide-section" id="gates"><h2>Decision gates</h2><p className="intro">Record the owner, evidence, uncertainty, operational impact, and rollback condition at every transition.</p><div className="operator-gates">{playbook.gates.map(g=><article key={g.title}><h3>{g.title}</h3><p>{g.text}</p></article>)}</div><div className="callout"><strong>Rollback safeguard:</strong> define the last known-good state, measurable failure signals, accountable decision owner, and fastest safe return path before restoring service.</div></section>
+    <GuideProvenance code={playbook.code} standards={referenceBasis[playbook.code] ?? ["NIST SP 800-61 Rev. 3"]} assumptions={["The organization has authorized incident leadership, protected communications, and access to relevant telemetry.", "Actions are adapted to business impact, legal obligations, architecture, and available evidence before execution."]} limitations={["This field guide is not a substitute for organization-specific legal, privacy, safety, regulatory, or business-continuity advice.", "Vendor interfaces and log availability vary by product, plan, region, configuration, and retention period."]}/>
   </div></main>;
 }

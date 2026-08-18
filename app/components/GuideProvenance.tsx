@@ -1,0 +1,5 @@
+import Link from "next/link";
+
+export function GuideProvenance({ code, version = "1.0", standards, assumptions, limitations }: { code: string; version?: string; standards: string[]; assumptions: string[]; limitations: string[] }) {
+  return <section className="provenance" aria-labelledby={`${code}-provenance`}><div><p className="eyebrow">AUTHORSHIP &amp; REVIEW</p><h2 id={`${code}-provenance`}>How to trust and adapt this guide</h2></div><dl><div><dt>Author &amp; accountable editor</dt><dd>Leandro Rocha</dd></div><div><dt>Version</dt><dd>{version}</dd></div><div><dt>Published / reviewed</dt><dd>18 August 2026</dd></div><div><dt>Review status</dt><dd>Maintainer-reviewed; independent peer review is not claimed.</dd></div><div><dt>Editorial process</dt><dd><Link href="/editorial-policy">Read the sourcing, corrections, and AI-assistance policy ↗</Link></dd></div></dl><div className="provenance-columns"><div><h3>Reference basis</h3><ul>{standards.map(x=><li key={x}>{x}</li>)}</ul></div><div><h3>Assumptions</h3><ul>{assumptions.map(x=><li key={x}>{x}</li>)}</ul></div><div><h3>Limitations</h3><ul>{limitations.map(x=><li key={x}>{x}</li>)}</ul></div></div></section>;
+}

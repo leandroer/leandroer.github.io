@@ -23,6 +23,11 @@ dependency modifications, credentials, persistence, evidence preservation,
 secret rotation, trusted rebuilds, and validation with code scanning, secret
 scanning, dependency review, and post-remediation monitoring.
 
+The `/resources` area provides editable timeline, evidence, containment,
+credential-rotation, AI-runtime, and recovery-authorization templates. The
+`/editorial-policy` page documents authorship, sourcing, review status,
+corrections, limitations, and AI-assisted drafting or editing.
+
 ## Operational playbooks
 
 The site exposes seven playbooks: ransomware, business email compromise, cloud
@@ -34,6 +39,14 @@ outbreak, and AI/LLM incident response.
 The site remains statically exported and dependency-light. Content additions
 must not weaken Content Security Policy or introduce unnecessary third-party
 JavaScript, analytics, or browser-side trackers.
+
+## Editorial accountability
+
+Articles, playbooks, and guides are authored and reviewed by Leandro Rocha.
+AI-assisted tools may support research, outlining, drafting, editing, or
+quality checks; technical claims, source selection, recommendations,
+corrections, and final publication decisions remain the author's
+responsibility. AI output is not treated as an authoritative source.
 
 ## Local development
 

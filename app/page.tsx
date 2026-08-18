@@ -22,7 +22,7 @@ export default function Home() {
       <header className="site-header">
         <Link className="brand" href="/" aria-label="LR InfoSec home"><span className="brand-mark">LR</span><span>INFOSEC<span className="brand-dot">.</span>LAB</span></Link>
         <nav aria-label="Primary navigation">
-          <a href="#knowledge">Knowledge</a><a href="/IncidentResponse/">Framework</a><a href="#playbooks">Playbooks</a><Link href="/ai-security-ir">AI Security IR</Link><Link href="/articles">Articles</Link>
+          <a href="#start">Start here</a><a href="/IncidentResponse/">Framework</a><a href="#playbooks">Playbooks</a><Link href="/resources">Resources</Link><Link href="/articles">Articles</Link>
         </nav>
         <Link className="header-cta" href="/articles">Read the field notes <span>↗</span></Link>
       </header>
@@ -45,7 +45,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="manifesto" id="about"><p>I keep this site for one reason: <strong>useful notes should not stay in private notebooks.</strong></p><p>Everything here is written for people who detect, investigate, and contain real attacks. The material is opinionated, openly shared, and revised when experience proves it wrong.</p></section>
+      <section className="manifesto" id="about"><p>I keep this site for one reason: <strong>useful notes should not stay in private notebooks.</strong></p><p>Everything here is authored and reviewed by Leandro Rocha for people who detect, investigate, and contain real attacks. AI-assisted tools may support research, drafting, or editing; technical claims and publication decisions remain the author&apos;s responsibility. <Link href="/editorial-policy">Read the editorial policy ↗</Link></p></section>
+
+      <section className="section" id="start">
+        <div className="section-label"><span>00 / START HERE</span><span>CHOOSE YOUR OPERATING NEED</span></div>
+        <div className="section-intro"><h2>Use the site<br/><em>like a field kit.</em></h2><p>Begin with the outcome you need. Each path leads to an operational resource, not a generic content category.</p></div>
+        <div className="path-grid"><Link className="path-card" href="/IncidentResponse/"><small>PREPARE A PROGRAM</small><h3>Build the response system</h3><p>Establish authority, severity, evidence discipline, containment gates, communications, exercises, and recovery criteria.</p><span>Open the framework →</span></Link><a className="path-card" href="#playbooks"><small>RESPOND NOW</small><h3>Select an incident playbook</h3><p>Start with scenario-specific evidence, first actions, decision gates, containment, eradication, and recovery.</p><span>Choose a playbook ↓</span></a><Link className="path-card" href="/ai-security-ir"><small>ENGINEER AI CONTROLS</small><h3>Defend models, agents, and data</h3><p>Connect AI incident response to identity, retrieval, independent policy, telemetry, tool use, and rollback.</p><span>Open AI Security IR →</span></Link><Link className="path-card" href="/resources"><small>RUN THE INCIDENT</small><h3>Download working artifacts</h3><p>Use structured templates for timelines, evidence, containment decisions, credentials, AI runtime state, and recovery approval.</p><span>Browse responder resources →</span></Link></div>
+      </section>
 
       <section className="section" id="knowledge">
         <div className="section-label"><span>01 / KNOWLEDGE BASE</span><span>FIELD-GUIDE FORMAT</span></div>
@@ -70,7 +76,7 @@ export default function Home() {
         <div className="publish-note"><div><span>Articles live as simple content files—easy to draft, review, schedule, and share.</span></div><Link href="/articles">Browse all articles ↗</Link></div>
       </section>
 
-      <footer><div className="brand"><span className="brand-mark">LR</span><span>INFOSEC<span className="brand-dot">.</span>LAB</span></div><p>Independent notes on AI security & incident response.</p><div><a href="https://github.com/leandroer" rel="noopener noreferrer">GitHub</a><a href="mailto:hello@lrinfosec.com">Contact</a></div><small>© 2026 LR InfoSec · Knowledge is a defensive control.</small></footer>
+      <footer><div className="brand"><span className="brand-mark">LR</span><span>INFOSEC<span className="brand-dot">.</span>LAB</span></div><p>Independent notes on AI security &amp; incident response.</p><div><Link href="/resources">Resources</Link><Link href="/editorial-policy">Editorial policy</Link><a href="https://github.com/leandroer" rel="noopener noreferrer">GitHub</a><a href="mailto:hello@lrinfosec.com">Contact</a></div><small>© 2026 LR InfoSec · Knowledge is a defensive control.</small></footer>
     </main>
   );
 }

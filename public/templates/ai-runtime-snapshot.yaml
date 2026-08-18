@@ -1,0 +1,44 @@
+snapshot:
+  incident_id: ""
+  captured_at_utc: ""
+  captured_by: ""
+  environment: ""
+  release_or_deployment_id: ""
+model:
+  provider: ""
+  model_id: ""
+  model_version_or_snapshot: ""
+  parameters_reference: ""
+instructions:
+  system_prompt_version: ""
+  developer_prompt_version: ""
+  policy_or_guardrail_version: ""
+agent:
+  definition_version: ""
+  runtime_version: ""
+  session_or_trace_ids: []
+  memory_references: []
+identity_and_authorization:
+  initiating_identity: ""
+  agent_or_service_identity: ""
+  delegated_credential_references: []
+  authorization_decision_ids: []
+retrieval:
+  index_or_collection_versions: []
+  queries_and_result_references: []
+  source_document_versions: []
+tools:
+  enabled_tool_versions: []
+  tool_call_and_result_references: []
+approvals:
+  approval_ids: []
+downstream:
+  target_system_log_references: []
+  confirmed_reads_writes_or_egress: []
+integrity:
+  export_location: ""
+  sha256: ""
+privacy:
+  data_minimization_notes: ""
+  access_classification: "restricted"
+  retention_or_hold: ""

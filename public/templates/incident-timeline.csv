@@ -1,0 +1,2 @@
+event_id,timestamp_utc,observed_or_reported,source_system,source_reference,actor_or_identity,asset_or_resource,event,security_relevance,confidence,decision_or_action,owner,recorded_by,recorded_at_utc
+EVT-001,YYYY-MM-DDThh:mm:ssZ,observed,AUTHORITATIVE_SOURCE,LOG_OR_CASE_REFERENCE,IDENTITY,ASSET,FACTUAL_EVENT,WHY_IT_MATTERS,high,NONE_OR_ACTION,OWNER,RECORDER,YYYY-MM-DDThh:mm:ssZ

@@ -1,0 +1,2 @@
+evidence_id,description,source_system,source_reference,collected_by,collected_at_utc,collection_method,time_range_utc,integrity_hash,hash_algorithm,storage_location,access_classification,custodian,retention_or_hold,notes
+EVD-001,DESCRIPTION,SOURCE,REFERENCE,COLLECTOR,YYYY-MM-DDThh:mm:ssZ,EXPORT_METHOD,START_TO_END,HASH,SHA-256,PROTECTED_LOCATION,RESTRICTED,CUSTODIAN,HOLD_OR_RETENTION,NOTES
