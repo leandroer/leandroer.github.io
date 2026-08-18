@@ -32,6 +32,8 @@ jobs:
         run: pnpm audit --prod
       - name: Build static website
         run: pnpm build
+      - name: Validate internal links and playbook routes
+        run: pnpm check:links
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
       - name: Upload website artifact

@@ -1,12 +1,12 @@
 import Link from "next/link";
 
 const playbooks = [
-  { code: "IR-01", title: "Ransomware", desc: "Decision points from first signal through recovery, with evidence-preservation gates.", time: "15 min", level: "Critical" },
-  { code: "IR-02", title: "Business email compromise", desc: "Secure identities, trace mailbox activity, and coordinate payment-risk decisions.", time: "15 min", level: "Critical" },
-  { code: "IR-03", title: "Cloud identity compromise", desc: "Revoke sessions, validate persistence, and hunt downstream cloud activity.", time: "15 min", level: "Critical" },
-  { code: "IR-04", title: "Data exfiltration", desc: "Confirm access paths, preserve transfer evidence, and bound notification scope.", time: "20 min", level: "High" },
+  { code: "IR-01", title: "Ransomware", desc: "Decision points from first signal through recovery, with evidence-preservation gates.", time: "15 min", level: "Critical", href: "/playbooks/ransomware" },
+  { code: "IR-02", title: "Business email compromise", desc: "Secure identities, trace mailbox activity, and coordinate payment-risk decisions.", time: "15 min", level: "Critical", href: "/playbooks/business-email-compromise" },
+  { code: "IR-03", title: "Cloud identity compromise", desc: "Revoke sessions, validate persistence, and hunt downstream cloud activity.", time: "15 min", level: "Critical", href: "/playbooks/cloud-identity-compromise" },
+  { code: "IR-04", title: "Data exfiltration", desc: "Confirm access paths, preserve transfer evidence, and bound notification scope.", time: "20 min", level: "High", href: "/playbooks/data-exfiltration" },
   { code: "IR-05", title: "Repository compromise", desc: "Audit code, workflows, dependencies, credentials, and persistence before trusted recovery.", time: "20 min", level: "Critical", href: "/repository-compromise" },
-  { code: "IR-06", title: "Malware outbreak", desc: "Isolate affected assets, collect volatile evidence, and rebuild from trusted sources.", time: "15 min", level: "High" },
+  { code: "IR-06", title: "Malware outbreak", desc: "Isolate affected assets, collect volatile evidence, and rebuild from trusted sources.", time: "15 min", level: "High", href: "/playbooks/malware-outbreak" },
   { code: "AI-IR-01", title: "AI / LLM incident", desc: "Contain unsafe agency, preserve prompts and traces, and validate a staged rollback.", time: "15 min", level: "Critical", href: "/ai-security-ir" },
 ];
 
