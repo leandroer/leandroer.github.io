@@ -2,9 +2,12 @@ import Link from "next/link";
 
 const playbooks = [
   { code: "IR-01", title: "Ransomware", desc: "Decision points from first signal through recovery, with evidence-preservation gates.", time: "15 min", level: "Critical" },
-  { code: "AI-02", title: "Prompt injection", desc: "Contain an agent or RAG workflow when untrusted content changes system behavior.", time: "20 min", level: "High" },
-  { code: "AI-04", title: "Model data exposure", desc: "Scope sensitive output, trace retrieval paths, revoke access, and preserve telemetry.", time: "30 min", level: "High" },
-  { code: "IR-07", title: "Identity compromise", desc: "Revoke sessions, validate persistence, and hunt downstream cloud activity.", time: "15 min", level: "Critical" },
+  { code: "IR-02", title: "Business email compromise", desc: "Secure identities, trace mailbox activity, and coordinate payment-risk decisions.", time: "15 min", level: "Critical" },
+  { code: "IR-03", title: "Cloud identity compromise", desc: "Revoke sessions, validate persistence, and hunt downstream cloud activity.", time: "15 min", level: "Critical" },
+  { code: "IR-04", title: "Data exfiltration", desc: "Confirm access paths, preserve transfer evidence, and bound notification scope.", time: "20 min", level: "High" },
+  { code: "IR-05", title: "Repository compromise", desc: "Audit code, workflows, dependencies, credentials, and persistence before trusted recovery.", time: "20 min", level: "Critical", href: "/repository-compromise" },
+  { code: "IR-06", title: "Malware outbreak", desc: "Isolate affected assets, collect volatile evidence, and rebuild from trusted sources.", time: "15 min", level: "High" },
+  { code: "AI-IR-01", title: "AI / LLM incident", desc: "Contain unsafe agency, preserve prompts and traces, and validate a staged rollback.", time: "15 min", level: "Critical", href: "/ai-security-ir" },
 ];
 
 const resources = [
@@ -19,7 +22,7 @@ export default function Home() {
       <header className="site-header">
         <Link className="brand" href="/" aria-label="LR InfoSec home"><span className="brand-mark">LR</span><span>INFOSEC<span className="brand-dot">.</span>LAB</span></Link>
         <nav aria-label="Primary navigation">
-          <a href="#knowledge">Knowledge</a><a href="/IncidentResponse/">Framework</a><a href="#playbooks">Playbooks</a><Link href="/articles">Articles</Link><a href="#about">About</a>
+          <a href="#knowledge">Knowledge</a><a href="/IncidentResponse/">Framework</a><a href="#playbooks">Playbooks</a><Link href="/ai-security-ir">AI Security IR</Link><Link href="/articles">Articles</Link>
         </nav>
         <Link className="header-cta" href="/articles">Read the field notes <span>↗</span></Link>
       </header>
@@ -58,7 +61,7 @@ export default function Home() {
           <p>A structured practitioner guide to preparation, detection, triage, containment, eradication, recovery, and lessons learned.</p>
           <span className="framework-link">Explore the framework <b>↗</b></span>
         </a>
-        <div className="playbook-list">{playbooks.map((p) => <article key={p.code}><span className="code">{p.code}</span><div><h3>{p.title}</h3><p>{p.desc}</p></div><div className="play-meta"><span>FIRST ACTION</span><b>{p.time}</b></div><div className="play-meta"><span>SEVERITY</span><b className={p.level === "Critical" ? "critical" : "high"}>{p.level}</b></div><span className="play-arrow">↗</span></article>)}</div>
+        <div className="playbook-list">{playbooks.map((p) => { const content = <><span className="code">{p.code}</span><div><h3>{p.title}</h3><p>{p.desc}</p></div><div className="play-meta"><span>FIRST ACTION</span><b>{p.time}</b></div><div className="play-meta"><span>SEVERITY</span><b className={p.level === "Critical" ? "critical" : "high"}>{p.level}</b></div><span className="play-arrow">↗</span></>; return p.href ? <Link className="playbook-row" href={p.href} key={p.code}>{content}</Link> : <article key={p.code}>{content}</article>; })}</div>
       </section>
 
       <section className="section latest">
