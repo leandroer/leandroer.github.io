@@ -7,6 +7,7 @@ export const metadata: Metadata = {
 };
 
 const articles = [
+  { date: "28 AUG 2026", kind: "AI SECURITY", title: "The first 60 minutes of an AI security incident", desc: "A commander-and-operator timeline for stopping autonomous activity, revoking unsafe authority, preserving evidence, and bounding downstream impact.", time: "11 MIN", href: "/articles/first-60-minutes-ai-security-incident" },
   { date: "14 AUG 2026", kind: "AI SECURITY", title: "Label before retrieval: securing data before AI touches it", desc: "A control architecture for preserving ownership, classification, authorization, retention, and tenant boundaries through RAG and agent memory.", time: "12 MIN", href: "/articles/label-before-retrieval" },
   { date: "31 JUL 2026", kind: "AI SECURITY", title: "Guardrails that can say no: OPA policy enforcement for AI agents", desc: "A practical architecture for independent policy decisions at agent tool boundaries, with approval binding, failure behavior, and audit requirements.", time: "9 MIN", href: "/articles/opa-policy-guardrails-for-ai-agents" },
   { date: "17 JUL 2026", kind: "AI SECURITY", title: "Incident response for autonomous AI agents", desc: "A practical framework for scoping identity, memory, tools, and delegated actions when an AI workflow goes wrong.", time: "8 MIN", href: "/articles/responding-to-agent-incidents" },
