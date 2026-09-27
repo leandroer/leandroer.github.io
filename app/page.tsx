@@ -36,12 +36,12 @@ export default function Home() {
           <div className="trust-line"><span>Independent</span><span>Evidence-led</span><span>Built for defenders</span></div>
         </div>
         <div className="signal-panel architect-board" aria-label="Current research notebook">
-          <div className="panel-head"><span>WORKING NOTES / 2026-08</span><span className="status">LAST UPDATED 28 AUG</span></div>
-          <div className="board-title"><span>CURRENT FOCUS</span><h2>The first<br/>60 minutes</h2><p>Stopping autonomous activity, removing unsafe authority, preserving evidence, and bounding downstream impact.</p></div>
+          <div className="panel-head"><span>WORKING NOTES / 2026-09</span><span className="status">LAST UPDATED 27 SEP</span></div>
+          <div className="board-title"><span>CURRENT FOCUS</span><h2>Machine<br/>identities</h2><p>Containing principals, credentials, tokens, trust paths, and the systems that can mint additional authority.</p></div>
           <div className="board-rule" />
-          <div className="board-grid"><div><small>01</small><b>Stop</b><span>Can the agent still run?</span></div><div><small>02</small><b>Revoke</b><span>What authority remains?</span></div><div><small>03</small><b>Preserve</b><span>What state will expire?</span></div><div><small>04</small><b>Scope</b><span>What changed downstream?</span></div></div>
-          <div className="margin-note">first-hour rule:<br/><strong>authority before theory</strong></div>
-          <div className="panel-foot"><span>NOTE / 008</span><span>STATUS / PUBLISHED</span><span>READ / 11 MIN</span></div>
+          <div className="board-grid"><div><small>01</small><b>Mint</b><span>Can it obtain new authority?</span></div><div><small>02</small><b>Revoke</b><span>Which sessions remain?</span></div><div><small>03</small><b>Deny</b><span>What can resources block?</span></div><div><small>04</small><b>Rotate</b><span>Is the control plane clean?</span></div></div>
+          <div className="margin-note">response rule:<br/><strong>principal ≠ credential</strong></div>
+          <div className="panel-foot"><span>NOTE / 010</span><span>STATUS / PUBLISHED</span><span>READ / 13 MIN</span></div>
         </div>
       </section>
 
@@ -72,7 +72,7 @@ export default function Home() {
 
       <section className="section latest">
         <div className="section-label"><span>03 / FIELD NOTES</span></div>
-        <div className="featured-article"><div className="article-visual"><span>INCIDENT CLOCK / 008</span><div className="agent-map"><i/><i/><i/><b>60:00</b></div></div><div className="article-copy"><p className="eyebrow">LATEST · AI SECURITY · 11 MIN READ</p><h2>The first 60 minutes</h2><p>A commander-and-operator timeline for stopping autonomous activity, removing unsafe authority, preserving evidence, and bounding downstream impact.</p><Link className="text-link" href="/articles/first-60-minutes-ai-security-incident">Read field note <span>→</span></Link></div></div>
+        <div className="featured-article"><div className="article-visual"><span>IDENTITY CONTROL PLANE / 010</span><div className="agent-map"><i/><i/><i/><b>ID</b></div></div><div className="article-copy"><p className="eyebrow">LATEST · IDENTITY SECURITY · 13 MIN READ</p><h2>Compromised machine identities</h2><p>A technical response guide for containing service accounts, workload identities, API keys, OAuth applications, certificates, delegated tokens, and their persistence paths.</p><Link className="text-link" href="/articles/compromised-machine-identities">Read field note <span>→</span></Link></div></div>
         <div className="publish-note"><div><span>Articles live as simple content files—easy to draft, review, schedule, and share.</span></div><Link href="/articles">Browse all articles ↗</Link></div>
       </section>
 
