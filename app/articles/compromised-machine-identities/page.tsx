@@ -96,10 +96,7 @@ export default function Article() {
 
         <h2>Preserve evidence without preserving the secret</h2>
         <p>Correlate immutable principal and application IDs, credential key IDs, certificate thumbprints, issuer, subject, audience, token or session ID, scopes, roles, creation and expiration times, source workload, deployment ID, request ID, target resource, action, and result.</p>
-        <pre><code>principal_id · application_id · credential_key_id{"
-"}token_issuer · token_subject · token_audience · session_id{"
-"}issued_at · expires_at · source_ip · workload_instance{"
-"}deployment_id · request_id · target_resource · action · result</code></pre>
+        <pre><code>principal_id · application_id · credential_key_id<br />token_issuer · token_subject · token_audience · session_id<br />issued_at · expires_at · source_ip · workload_instance<br />deployment_id · request_id · target_resource · action · result</code></pre>
         <p>Do not place passwords, private keys, API keys, bearer tokens, or reusable session cookies in case notes. When correlation requires a sensitive value, record a cryptographic fingerprint or the provider’s non-secret credential identifier.</p>
         <p>Normalize identity-provider, cloud, workload, gateway, and target-system events to UTC while retaining each source’s original timestamp and ingestion time.</p>
 
