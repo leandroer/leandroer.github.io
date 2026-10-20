@@ -1,4 +1,5 @@
 import copy
+import hashlib
 import importlib.util
 import json
 from pathlib import Path
@@ -17,10 +18,21 @@ verify = module('verify', 'verify-deployment.py')
 
 class PublicationTests(unittest.TestCase):
     def test_overdue_and_future_partition(self):
-        due, future = prepare.approved_due(today='2026-10-01')
-        self.assertEqual([a['slug'] for a in due], ['when-your-ai-evidence-cannot-be-trusted'])
-        self.assertEqual([a['slug'] for a in future], ['poisoned-rag-pipelines'])
-        self.assertEqual(len(prepare.approved_due(today='2027-01-01')[0]), 2)
+        # Synthetic dates keep the test stable as new approved articles are added.
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            records = []
+            for slug, date in [('overdue', '2026-09-11'), ('future', '2026-10-16')]:
+                source = root / f'app/articles/{slug}/page.tsx'
+                source.parent.mkdir(parents=True)
+                source.write_text('approved content')
+                records.append({'slug':slug, 'date':date, 'source':source.relative_to(root).as_posix(), 'path':f'/articles/{slug}/', 'approval':{'turnId':'explicit-approval'}, 'sourceSHA256':hashlib.sha256(source.read_bytes()).hexdigest()})
+            (root / 'publishing').mkdir()
+            (root / 'publishing/approved.json').write_text(json.dumps({'articles':records}))
+            due, future = prepare.approved_due(root=root, today='2026-10-01')
+            self.assertEqual([a['slug'] for a in due], ['overdue'])
+            self.assertEqual([a['slug'] for a in future], ['future'])
+            self.assertEqual(len(prepare.approved_due(root=root, today='2027-01-01')[0]), 2)
 
     def test_changed_source_or_missing_approval_fails_closed(self):
         original = json.loads((prepare.ROOT / 'publishing/approved.json').read_text())
@@ -40,6 +52,11 @@ class PublicationTests(unittest.TestCase):
                 (root / 'publishing/approved.json').write_text(json.dumps(manifest))
                 with self.assertRaises(ValueError):
                     prepare.approved_due(root=root, today='2027-01-01')
+
+    def test_missing_approved_article_rejected(self):
+        with patch.object(verify, 'fetch', return_value='{"commit":"new","articles":[]}'):
+            with self.assertRaisesRegex(RuntimeError, 'exact due approved article set'):
+                verify.verify('new', expected=[{'path':'/articles/expected/'}])
 
     def test_stale_deployment_rejected(self):
         with patch.object(verify, 'fetch', return_value='{"commit":"old"}'):
