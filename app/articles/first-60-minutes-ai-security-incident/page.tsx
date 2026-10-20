@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/articles/first-60-minutes-ai-security-incident/" },
   title: "The first 60 minutes of an AI security incident",
   description: "A commander-and-operator timeline for stopping autonomous activity, revoking unsafe authority, preserving AI evidence, and bounding downstream impact.",
 };

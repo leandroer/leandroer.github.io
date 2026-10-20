@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-export const metadata: Metadata = {"title":"When retrieval becomes the attack path","description":"Incident response for poisoned RAG pipelines: trace contamination, contain retrieval, preserve evidence, and rebuild trusted indexes."};
+export const metadata: Metadata = {
+  alternates: { canonical: "/articles/poisoned-rag-pipelines/" },"title":"When retrieval becomes the attack path","description":"Incident response for poisoned RAG pipelines: trace contamination, contain retrieval, preserve evidence, and rebuild trusted indexes."};
 // Build-time markup generated from the exact approved private draft; no runtime input.
 const approvedHtml = [
   "<h2>Incident response for poisoned RAG pipelines</h2>",

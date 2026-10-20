@@ -2,7 +2,8 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { GuideProvenance } from "../components/GuideProvenance";
 
-export const metadata: Metadata = { title: "Secure Repository-Compromise Response", description: "Evidence-led response guidance for compromised source repositories, workflows, dependencies, commits, and credentials." };
+export const metadata: Metadata = {
+  alternates: { canonical: "/repository-compromise/" }, title: "Secure Repository-Compromise Response", description: "Evidence-led response guidance for compromised source repositories, workflows, dependencies, commits, and credentials." };
 
 const surfaces = [
   ["Code & history", "Malicious commits, rewritten history, branches, tags, releases, binaries, generated files, submodules, and visibility changes."],

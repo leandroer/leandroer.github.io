@@ -1,7 +1,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = { title: "Responder Resources", description: "Downloadable incident-response templates for timelines, evidence, containment, credentials, AI runtime state, and recovery approval." };
+export const metadata: Metadata = {
+  alternates: { canonical: "/resources/" }, title: "Responder Resources", description: "Downloadable incident-response templates for timelines, evidence, containment, credentials, AI runtime state, and recovery approval." };
 const downloads = [
   ["CSV", "Incident timeline", "Record authoritative UTC events, sources, confidence, decisions, and owners.", "/templates/incident-timeline.csv"],
   ["CSV", "Evidence inventory", "Track collection source, integrity, custody, access, retention, and storage.", "/templates/evidence-inventory.csv"],

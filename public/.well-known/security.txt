@@ -1,0 +1,5 @@
+Contact: https://github.com/leandroer/leandroer.github.io/security/advisories/new
+Expires: 2027-10-20T23:59:59Z
+Preferred-Languages: en
+Canonical: https://lrinfosec.com/.well-known/security.txt
+Policy: https://github.com/leandroer/leandroer.github.io/security/policy

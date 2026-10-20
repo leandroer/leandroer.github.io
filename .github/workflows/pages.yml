@@ -35,7 +35,7 @@ jobs:
       - name: Audit production dependencies
         run: pnpm audit --prod
       - name: Validate approved backlog and prevent early publication
-        run: python3 -m unittest discover -s scripts -p 'test_publication.py'
+        run: python3 -m unittest discover -s scripts -p 'test_*.py'
       - name: Prepare due approved articles
         run: python3 scripts/prepare-publication.py --prepare
       - name: Build static website
