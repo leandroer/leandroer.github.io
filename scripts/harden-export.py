@@ -16,6 +16,10 @@ class Markup(HTMLParser):
     def __init__(self):
         super().__init__(convert_charrefs=False)
         self.styles = set()
+        self.scripts = set()
+        self.style_blocks = set()
+        self.capture = None
+        self.chunks = []
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
         if 'style' in attrs:
@@ -24,19 +28,33 @@ class Markup(HTMLParser):
             src = attrs['src']
             if re.match(r'[a-zA-Z][a-zA-Z0-9+.-]*:', src) or src.startswith('//') or '\\' in src:
                 raise ValueError('Unexpected nonlocal script source')
+        if tag in ('script', 'style') and not attrs.get('src'):
+            self.capture = tag
+            self.chunks = []
         if any(name.lower().startswith('on') for name in attrs):
             raise ValueError('Inline event handlers are prohibited')
+
+    def handle_data(self, value):
+        if self.capture:
+            self.chunks.append(value)
+
+    def handle_endtag(self, tag):
+        if tag == self.capture:
+            target = self.scripts if tag == 'script' else self.style_blocks
+            target.add(digest(''.join(self.chunks)))
+            self.capture = None
+            self.chunks = []
 
 def harden(source):
     if re.search(r'http-equiv=["\']Content-Security-Policy', source, re.I):
         raise ValueError('Export already contains CSP; do not silently stack policies')
     markup = Markup()
     markup.feed(source)
-    scripts = set()
-    for match in re.finditer(r'<script\b([^>]*)>([\s\S]*?)</script\s*>', source, re.I):
-        if not re.search(r'\bsrc\s*=', match[1], re.I):
-            scripts.add(digest(match[2]))
-    styles = {digest(m[1]) for m in re.finditer(r'<style\b[^>]*>([\s\S]*?)</style\s*>', source, re.I)}
+    markup.close()
+    if markup.capture:
+        raise ValueError('Unclosed active-content tag in export')
+    scripts = markup.scripts
+    styles = markup.style_blocks
     policy = "; ".join([
         "default-src 'none'",
         "script-src 'self' " + ' '.join(sorted(scripts)),
