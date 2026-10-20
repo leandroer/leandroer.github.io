@@ -1,3 +1,4 @@
+export const metadata = { alternates: { canonical: "/" } };
 import { publishedArticles } from "./lib/articles";
 import Link from "next/link";
 

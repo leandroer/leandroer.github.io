@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/articles/compromised-machine-identities/" },
   title: "Incident response for compromised machine identities",
   description: "A technical response guide for containing compromised service accounts, workload identities, API keys, OAuth applications, certificates, and delegated tokens.",
 };

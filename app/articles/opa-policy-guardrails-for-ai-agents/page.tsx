@@ -1,7 +1,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = { title: "Guardrails that can say no: OPA policy enforcement for AI agents", description: "A practical architecture for enforcing independent policy decisions at AI agent tool boundaries." };
+export const metadata: Metadata = {
+  alternates: { canonical: "/articles/opa-policy-guardrails-for-ai-agents/" }, title: "Guardrails that can say no: OPA policy enforcement for AI agents", description: "A practical architecture for enforcing independent policy decisions at AI agent tool boundaries." };
 
 export default function Article() { return <main className="article-page">
   <header className="site-header"><Link className="brand" href="/"><span className="brand-mark">LR</span><span>INFOSEC<span className="brand-dot">.</span>LAB</span></Link><nav><Link href="/#knowledge">Knowledge</Link><a href="/IncidentResponse/">Framework</a><Link href="/#playbooks">Playbooks</Link><Link href="/articles">Articles</Link></nav><Link className="header-cta" href="/articles">All field notes ↗</Link></header>

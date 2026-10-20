@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/articles/ransomware-containment-is-a-business-decision/" },
   title: "Ransomware containment under pressure",
   description: "A technical decision framework for ransomware containment, evidence preservation, control-plane protection, and staged recovery.",
 };

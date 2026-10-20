@@ -2,7 +2,8 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { GuideProvenance } from "../components/GuideProvenance";
 
-export const metadata: Metadata = { title: "AI Security Incident Response", description: "Operator guidance for detecting, investigating, containing, eradicating, and recovering from AI and LLM incidents." };
+export const metadata: Metadata = {
+  alternates: { canonical: "/ai-security-ir/" }, title: "AI Security Incident Response", description: "Operator guidance for detecting, investigating, containing, eradicating, and recovering from AI and LLM incidents." };
 
 const scenarios = [
   ["01", "Prompt injection & tool abuse", "Untrusted input overrides intended behavior or drives a tool beyond the user's authorized task."],

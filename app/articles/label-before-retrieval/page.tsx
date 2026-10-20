@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/articles/label-before-retrieval/" },
   title: "Label before retrieval: securing data before AI touches it",
   description: "A practical control architecture for preserving classification, ownership, authorization, retention, and tenant boundaries through RAG pipelines and agent memory.",
 };

@@ -6,7 +6,8 @@
     "desc": "A technical response guide for containing service accounts, workload identities, API keys, OAuth applications, certificates, delegated tokens, and their persistence paths.",
     "time": "13 MIN",
     "href": "/articles/compromised-machine-identities/",
-    "publishDate": "2026-09-27"
+    "publishDate": "2026-09-27",
+    "scheduledDate": "2026-09-27"
   },
   {
     "date": "28 AUG 2026",
@@ -15,7 +16,8 @@
     "desc": "A commander-and-operator timeline for stopping autonomous activity, revoking unsafe authority, preserving evidence, and bounding downstream impact.",
     "time": "11 MIN",
     "href": "/articles/first-60-minutes-ai-security-incident/",
-    "publishDate": "2026-08-28"
+    "publishDate": "2026-08-28",
+    "scheduledDate": "2026-08-28"
   },
   {
     "date": "14 AUG 2026",
@@ -24,7 +26,8 @@
     "desc": "A control architecture for preserving ownership, classification, authorization, retention, and tenant boundaries through RAG and agent memory.",
     "time": "12 MIN",
     "href": "/articles/label-before-retrieval/",
-    "publishDate": "2026-08-14"
+    "publishDate": "2026-08-14",
+    "scheduledDate": "2026-08-14"
   },
   {
     "date": "31 JUL 2026",
@@ -33,7 +36,8 @@
     "desc": "A practical architecture for independent policy decisions at agent tool boundaries, with approval binding, failure behavior, and audit requirements.",
     "time": "9 MIN",
     "href": "/articles/opa-policy-guardrails-for-ai-agents/",
-    "publishDate": "2026-07-31"
+    "publishDate": "2026-07-31",
+    "scheduledDate": "2026-07-31"
   },
   {
     "date": "17 JUL 2026",
@@ -42,7 +46,8 @@
     "desc": "A practical framework for scoping identity, memory, tools, and delegated actions when an AI workflow goes wrong.",
     "time": "8 MIN",
     "href": "/articles/responding-to-agent-incidents/",
-    "publishDate": "2026-07-17"
+    "publishDate": "2026-07-17",
+    "scheduledDate": "2026-07-17"
   },
   {
     "date": "03 JUL 2026",
@@ -51,7 +56,8 @@
     "desc": "The minimum viable telemetry model for prompts, retrieval, policy decisions, tool execution, and human approvals.",
     "time": "6 MIN",
     "href": "/articles/what-to-log-before-your-first-ai-incident/",
-    "publishDate": "2026-07-03"
+    "publishDate": "2026-07-03",
+    "scheduledDate": "2026-07-03"
   },
   {
     "date": "19 JUN 2026",
@@ -60,24 +66,27 @@
     "desc": "A technical decision framework for isolation, control-plane protection, evidence preservation, and staged recovery.",
     "time": "12 MIN",
     "href": "/articles/ransomware-containment-is-a-business-decision/",
-    "publishDate": "2026-06-19"
+    "publishDate": "2026-06-19",
+    "scheduledDate": "2026-06-19"
   },
   {
-    "date": "11 SEP 2026",
-    "publishDate": "2026-09-11",
+    "date": "20 OCT 2026",
+    "publishDate": "2026-10-20",
     "kind": "AI SECURITY",
     "title": "When your AI evidence cannot be trusted",
     "desc": "Preserve execution paths, provenance, prompts, retrieval, memory, tool actions, and independently verifiable AI evidence.",
     "time": "15 MIN",
-    "href": "/articles/when-your-ai-evidence-cannot-be-trusted/"
+    "href": "/articles/when-your-ai-evidence-cannot-be-trusted/",
+    "scheduledDate": "2026-09-11"
   },
   {
-    "date": "16 OCT 2026",
-    "publishDate": "2026-10-16",
+    "date": "20 OCT 2026",
+    "publishDate": "2026-10-20",
     "kind": "AI SECURITY",
     "title": "When retrieval becomes the attack path",
     "desc": "Incident response for poisoned RAG pipelines: trace contamination, contain retrieval, preserve evidence, and rebuild trusted indexes.",
     "time": "15 MIN",
-    "href": "/articles/poisoned-rag-pipelines/"
+    "href": "/articles/poisoned-rag-pipelines/",
+    "scheduledDate": "2026-10-16"
   }
 ]

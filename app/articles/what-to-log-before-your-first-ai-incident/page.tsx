@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/articles/what-to-log-before-your-first-ai-incident/" },
   title: "What to log before your first AI incident",
   description: "A minimum viable telemetry model for investigating AI-enabled systems.",
 };

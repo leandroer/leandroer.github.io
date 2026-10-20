@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-export const metadata: Metadata = {"title":"When your AI evidence cannot be trusted","description":"Preserve execution paths, provenance, prompts, retrieval, memory, tool actions, and independently verifiable AI evidence."};
+export const metadata: Metadata = {
+  alternates: { canonical: "/articles/when-your-ai-evidence-cannot-be-trusted/" },"title":"When your AI evidence cannot be trusted","description":"Preserve execution paths, provenance, prompts, retrieval, memory, tool actions, and independently verifiable AI evidence."};
 // Build-time markup generated from the exact approved private draft; no runtime input.
 const approvedHtml = [
   "<p>A transcript is a user interface artifact. It is not a complete forensic record of what an AI system received, decided, retrieved, remembered, or executed.</p>",
