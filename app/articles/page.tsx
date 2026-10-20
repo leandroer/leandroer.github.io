@@ -1,3 +1,4 @@
+import { publishedArticles } from "../lib/articles";
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -6,15 +7,7 @@ export const metadata: Metadata = {
   description: "Technical articles on AI security and incident response.",
 };
 
-const articles = [
-  { date: "27 SEP 2026", kind: "IDENTITY SECURITY", title: "Incident response for compromised machine identities", desc: "A technical response guide for containing service accounts, workload identities, API keys, OAuth applications, certificates, delegated tokens, and their persistence paths.", time: "13 MIN", href: "/articles/compromised-machine-identities" },
-  { date: "28 AUG 2026", kind: "AI SECURITY", title: "The first 60 minutes of an AI security incident", desc: "A commander-and-operator timeline for stopping autonomous activity, revoking unsafe authority, preserving evidence, and bounding downstream impact.", time: "11 MIN", href: "/articles/first-60-minutes-ai-security-incident" },
-  { date: "14 AUG 2026", kind: "AI SECURITY", title: "Label before retrieval: securing data before AI touches it", desc: "A control architecture for preserving ownership, classification, authorization, retention, and tenant boundaries through RAG and agent memory.", time: "12 MIN", href: "/articles/label-before-retrieval" },
-  { date: "31 JUL 2026", kind: "AI SECURITY", title: "Guardrails that can say no: OPA policy enforcement for AI agents", desc: "A practical architecture for independent policy decisions at agent tool boundaries, with approval binding, failure behavior, and audit requirements.", time: "9 MIN", href: "/articles/opa-policy-guardrails-for-ai-agents" },
-  { date: "17 JUL 2026", kind: "AI SECURITY", title: "Incident response for autonomous AI agents", desc: "A practical framework for scoping identity, memory, tools, and delegated actions when an AI workflow goes wrong.", time: "8 MIN", href: "/articles/responding-to-agent-incidents" },
-  { date: "03 JUL 2026", kind: "DETECTION", title: "What to log before your first AI incident", desc: "The minimum viable telemetry model for prompts, retrieval, policy decisions, tool execution, and human approvals.", time: "6 MIN", href: "/articles/what-to-log-before-your-first-ai-incident" },
-  { date: "19 JUN 2026", kind: "PLAYBOOK", title: "Ransomware containment under pressure", desc: "A technical decision framework for isolation, control-plane protection, evidence preservation, and staged recovery.", time: "12 MIN", href: "/articles/ransomware-containment-is-a-business-decision" },
-];
+const articles = publishedArticles();
 
 export default function Articles() {
   return <main className="articles-shell">

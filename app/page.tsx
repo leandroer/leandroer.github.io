@@ -1,3 +1,4 @@
+import { publishedArticles } from "./lib/articles";
 import Link from "next/link";
 
 const playbooks = [
@@ -17,6 +18,7 @@ const resources = [
 ];
 
 export default function Home() {
+  const latest = publishedArticles()[0];
   return (
     <main>
       <header className="site-header">
@@ -72,7 +74,7 @@ export default function Home() {
 
       <section className="section latest">
         <div className="section-label"><span>03 / FIELD NOTES</span></div>
-        <div className="featured-article"><div className="article-visual"><span>IDENTITY CONTROL PLANE / 010</span><div className="agent-map"><i/><i/><i/><b>ID</b></div></div><div className="article-copy"><p className="eyebrow">LATEST · IDENTITY SECURITY · 13 MIN READ</p><h2>Compromised machine identities</h2><p>A technical response guide for containing service accounts, workload identities, API keys, OAuth applications, certificates, delegated tokens, and their persistence paths.</p><Link className="text-link" href="/articles/compromised-machine-identities">Read field note <span>→</span></Link></div></div>
+        <div className="featured-article"><div className="article-visual"><span>RETRIEVAL INTEGRITY / 011</span><div className="agent-map"><i/><i/><i/><b>ID</b></div></div><div className="article-copy"><p className="eyebrow">LATEST · {latest.kind} · {latest.time} READ</p><h2>{latest.title}</h2><p>{latest.desc}</p><Link className="text-link" href={latest.href}>Read field note <span>→</span></Link></div></div>
         <div className="publish-note"><div><span>Articles live as simple content files—easy to draft, review, schedule, and share.</span></div><Link href="/articles">Browse all articles ↗</Link></div>
       </section>
 

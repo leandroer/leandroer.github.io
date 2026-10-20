@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "timeZone": "America/New_York",
+  "articles": [
+    {
+      "slug": "when-your-ai-evidence-cannot-be-trusted",
+      "title": "When your AI evidence cannot be trusted",
+      "date": "2026-09-11",
+      "note": "009",
+      "description": "Preserve execution paths, provenance, prompts, retrieval, memory, tool actions, and independently verifiable AI evidence.",
+      "approvedAt": "2026-09-06",
+      "turn": "01a076db-3087-7ff2-b928-1e03002da35f",
+      "path": "/articles/when-your-ai-evidence-cannot-be-trusted/",
+      "source": "app/articles/when-your-ai-evidence-cannot-be-trusted/page.tsx",
+      "approval": {
+        "approvedAt": "2026-09-06",
+        "threadId": "019f7057-cbe2-75b3-a676-583ff84ea557",
+        "turnId": "01a076db-3087-7ff2-b928-1e03002da35f"
+      },
+      "sourceSHA256": "b615e48f5db457f2a1e0df39708531d92c9bea4595cdfa7d19ae5c37aff7feb7"
+    },
+    {
+      "slug": "poisoned-rag-pipelines",
+      "title": "When retrieval becomes the attack path",
+      "date": "2026-10-16",
+      "note": "011",
+      "description": "Incident response for poisoned RAG pipelines: trace contamination, contain retrieval, preserve evidence, and rebuild trusted indexes.",
+      "approvedAt": "2026-10-14",
+      "turn": "01a13c88-9114-7a51-bd6a-3e1b2630fd03",
+      "path": "/articles/poisoned-rag-pipelines/",
+      "source": "app/articles/poisoned-rag-pipelines/page.tsx",
+      "approval": {
+        "approvedAt": "2026-10-14",
+        "threadId": "019f7057-cbe2-75b3-a676-583ff84ea557",
+        "turnId": "01a13c88-9114-7a51-bd6a-3e1b2630fd03"
+      },
+      "sourceSHA256": "fe46ec81737b3beb5badffe79b021391dae513eb3f70de3a71e1c2cc85922b86"
+    }
+  ]
+}
