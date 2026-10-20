@@ -54,9 +54,9 @@ class PublicationTests(unittest.TestCase):
             pages[path] = 'missing'
             with self.subTest(path=path), patch.object(verify, 'fetch', side_effect=lambda path, commit:pages[path]):
                 with self.assertRaises(RuntimeError):
-                    verify.verify('new')
+                    verify.verify('new', expected=release['articles'])
         with patch.object(verify, 'fetch', side_effect=lambda path, commit:valid[path]):
-            self.assertEqual(verify.verify('new')['commit'], 'new')
+            self.assertEqual(verify.verify('new', expected=release['articles'])['commit'], 'new')
 
 if __name__ == '__main__':
     unittest.main()

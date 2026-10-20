@@ -5,6 +5,9 @@ import html
 import json
 import re
 import time
+from datetime import datetime
+from pathlib import Path
+from zoneinfo import ZoneInfo
 from urllib.request import Request, urlopen
 
 BASE = 'https://lrinfosec.com'
@@ -16,10 +19,16 @@ def fetch(path, commit):
             raise RuntimeError(f'{path}: HTTP {response.status}')
         return response.read().decode('utf-8')
 
-def verify(commit):
+def verify(commit, expected=None):
     release = json.loads(fetch('/release.json', commit))
     if release['commit'] != commit:
         raise RuntimeError('Live release marker does not match the deployed commit')
+    if expected is None:
+        manifest = json.loads((Path(__file__).resolve().parents[1] / 'publishing/approved.json').read_text())
+        today = datetime.now(ZoneInfo('America/New_York')).date().isoformat()
+        expected = [{'path':a['path'], 'title':a['title'], 'sourceSHA256':a['sourceSHA256']} for a in manifest['articles'] if a['date'] <= today]
+    if sorted(release.get('articles', []), key=lambda a:a['path']) != sorted(expected, key=lambda a:a['path']):
+        raise RuntimeError('Live release does not contain the exact due approved article set')
     home, index = fetch('/', commit), fetch('/articles/', commit)
     for article in release['articles']:
         page = fetch(article['path'], commit)
