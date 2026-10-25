@@ -7,7 +7,13 @@
     "time": "13 MIN",
     "href": "/articles/compromised-machine-identities/",
     "publishDate": "2026-09-27",
-    "scheduledDate": "2026-09-27"
+    "scheduledDate": "2026-09-27",
+    "verifiedDate": "27 SEP 2026",
+    "note": "010",
+    "scenarios": ["Machine identity compromise", "Credential abuse"],
+    "technologies": ["IAM", "OAuth", "Cloud", "Kubernetes"],
+    "phases": ["Detection", "Containment", "Eradication", "Recovery"],
+    "artifactTypes": ["Field note", "Architecture", "Checklist"]
   },
   {
     "date": "28 AUG 2026",
@@ -17,7 +23,13 @@
     "time": "11 MIN",
     "href": "/articles/first-60-minutes-ai-security-incident/",
     "publishDate": "2026-08-28",
-    "scheduledDate": "2026-08-28"
+    "scheduledDate": "2026-08-28",
+    "verifiedDate": "28 AUG 2026",
+    "note": "008",
+    "scenarios": ["AI agent incident", "Unauthorized action"],
+    "technologies": ["AI agents", "Identity", "Tools", "Memory"],
+    "phases": ["Detection", "Containment", "Evidence", "Scoping"],
+    "artifactTypes": ["Field note", "Timeline", "Checklist"]
   },
   {
     "date": "14 AUG 2026",
@@ -27,7 +39,13 @@
     "time": "12 MIN",
     "href": "/articles/label-before-retrieval/",
     "publishDate": "2026-08-14",
-    "scheduledDate": "2026-08-14"
+    "scheduledDate": "2026-08-14",
+    "verifiedDate": "14 AUG 2026",
+    "note": "007",
+    "scenarios": ["Sensitive data exposure", "Cross-tenant access"],
+    "technologies": ["RAG", "Vector stores", "Data classification", "Agent memory"],
+    "phases": ["Preparation", "Detection", "Containment", "Recovery"],
+    "artifactTypes": ["Field note", "Architecture", "Checklist"]
   },
   {
     "date": "31 JUL 2026",
@@ -37,7 +55,13 @@
     "time": "9 MIN",
     "href": "/articles/opa-policy-guardrails-for-ai-agents/",
     "publishDate": "2026-07-31",
-    "scheduledDate": "2026-07-31"
+    "scheduledDate": "2026-07-31",
+    "verifiedDate": "31 JUL 2026",
+    "note": "006",
+    "scenarios": ["Policy bypass", "Unauthorized agent action"],
+    "technologies": ["OPA", "Rego", "AI agents", "Policy engines"],
+    "phases": ["Preparation", "Containment", "Recovery"],
+    "artifactTypes": ["Field note", "Policy example", "Architecture", "Checklist"]
   },
   {
     "date": "17 JUL 2026",
@@ -47,7 +71,13 @@
     "time": "8 MIN",
     "href": "/articles/responding-to-agent-incidents/",
     "publishDate": "2026-07-17",
-    "scheduledDate": "2026-07-17"
+    "scheduledDate": "2026-07-17",
+    "verifiedDate": "17 JUL 2026",
+    "note": "005",
+    "scenarios": ["AI agent incident", "Tool misuse"],
+    "technologies": ["AI agents", "Identity", "RAG", "Tools"],
+    "phases": ["Detection", "Scoping", "Containment", "Evidence", "Recovery"],
+    "artifactTypes": ["Field note", "Checklist"]
   },
   {
     "date": "03 JUL 2026",
@@ -57,7 +87,13 @@
     "time": "6 MIN",
     "href": "/articles/what-to-log-before-your-first-ai-incident/",
     "publishDate": "2026-07-03",
-    "scheduledDate": "2026-07-03"
+    "scheduledDate": "2026-07-03",
+    "verifiedDate": "03 JUL 2026",
+    "note": "004",
+    "scenarios": ["AI observability gap", "Forensic readiness"],
+    "technologies": ["Telemetry", "SIEM", "AI agents", "RAG"],
+    "phases": ["Preparation", "Detection", "Evidence"],
+    "artifactTypes": ["Field note", "Logging schema", "Checklist"]
   },
   {
     "date": "19 JUN 2026",
@@ -67,7 +103,13 @@
     "time": "12 MIN",
     "href": "/articles/ransomware-containment-is-a-business-decision/",
     "publishDate": "2026-06-19",
-    "scheduledDate": "2026-06-19"
+    "scheduledDate": "2026-06-19",
+    "verifiedDate": "19 JUN 2026",
+    "note": "003",
+    "scenarios": ["Ransomware", "Destructive attack"],
+    "technologies": ["EDR", "Identity", "Network", "Backups"],
+    "phases": ["Containment", "Evidence", "Recovery"],
+    "artifactTypes": ["Playbook", "Architecture", "Decision matrix", "Checklist"]
   },
   {
     "date": "20 OCT 2026",
@@ -77,7 +119,13 @@
     "desc": "Preserve execution paths, provenance, prompts, retrieval, memory, tool actions, and independently verifiable AI evidence.",
     "time": "15 MIN",
     "href": "/articles/when-your-ai-evidence-cannot-be-trusted/",
-    "scheduledDate": "2026-09-11"
+    "scheduledDate": "2026-09-11",
+    "verifiedDate": "20 OCT 2026",
+    "note": "009",
+    "scenarios": ["Evidence integrity", "AI forensics"],
+    "technologies": ["Tracing", "Prompts", "RAG", "Agent memory"],
+    "phases": ["Detection", "Evidence", "Scoping", "Recovery"],
+    "artifactTypes": ["Field note", "Architecture", "Forensic record", "Checklist"]
   },
   {
     "date": "20 OCT 2026",
@@ -87,7 +135,13 @@
     "desc": "Incident response for poisoned RAG pipelines: trace contamination, contain retrieval, preserve evidence, and rebuild trusted indexes.",
     "time": "15 MIN",
     "href": "/articles/poisoned-rag-pipelines/",
-    "scheduledDate": "2026-10-16"
+    "scheduledDate": "2026-10-16",
+    "verifiedDate": "20 OCT 2026",
+    "note": "011",
+    "scenarios": ["RAG poisoning", "Data integrity"],
+    "technologies": ["RAG", "Embeddings", "Vector stores", "Agent memory"],
+    "phases": ["Detection", "Containment", "Evidence", "Recovery"],
+    "artifactTypes": ["Field note", "Architecture", "Lineage record", "Checklist"]
   },
   {
     "date": "30 OCT 2026",
@@ -97,6 +151,12 @@
     "desc": "Trace parent-child agents, delegated authority, task queues, containment decisions, and confirmed downstream consequences.",
     "time": "22 MIN",
     "href": "/articles/unauthorized-agent-delegation/",
-    "scheduledDate": "2026-10-30"
+    "scheduledDate": "2026-10-30",
+    "verifiedDate": "25 OCT 2026",
+    "note": "012",
+    "scenarios": ["Unauthorized delegation", "Privilege amplification"],
+    "technologies": ["AI agents", "Task queues", "Identity", "OpenTelemetry"],
+    "phases": ["Detection", "Containment", "Evidence", "Recovery"],
+    "artifactTypes": ["Field note", "Architecture", "Detection query", "Worksheet", "Checklist"]
   }
 ]

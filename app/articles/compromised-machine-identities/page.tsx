@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { IncidentPanel, ArticleNavigation } from "../../components/ArticleOperations";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/articles/compromised-machine-identities/" },
@@ -15,11 +16,12 @@ const containmentSteps = [
 ];
 
 export default function Article() {
-  return <main className="article-page">
+  return <main className="article-page" id="top">
     <header className="site-header"><Link className="brand" href="/"><span className="brand-mark">LR</span><span>INFOSEC<span className="brand-dot">.</span>LAB</span></Link><nav aria-label="Primary navigation"><Link href="/#knowledge">Knowledge</Link><a href="/IncidentResponse/">Framework</a><Link href="/#playbooks">Playbooks</Link><Link href="/articles">Articles</Link></nav><Link className="header-cta" href="/articles">All field notes ↗</Link></header>
     <section className="article-head"><p className="eyebrow">FIELD NOTE 010 · IDENTITY SECURITY · 27 SEP 2026</p><h1>Incident response for compromised machine identities</h1><p className="dek">A service account does not call the help desk when it is compromised. Responders must reconstruct the incident from credentials, token issuance, role assignments, workload activity, and the systems capable of minting additional authority.</p></section>
+    <IncidentPanel slug="compromised-machine-identities"/>
     <div className="article-body">
-      <aside className="toc"><b>IN THIS NOTE</b>01 / Recognition<br/>02 / Identity graph<br/>03 / Containment<br/>04 / Rotation<br/>05 / Persistence<br/>06 / Evidence<br/>07 / Recovery<br/>08 / Engineering</aside>
+      <ArticleNavigation slug="compromised-machine-identities"/>
       <article className="prose">
         <p>An API key appears in a public repository. A service principal authenticates from an unfamiliar environment. A Kubernetes workload starts requesting tokens for resources it has never used.</p>
         <p>These can look like simple credential incidents, but rotating one secret is rarely sufficient.</p>
@@ -28,7 +30,7 @@ export default function Article() {
         <p>Deleting a credential does not necessarily invalidate tokens already issued. Revoking a token does not remove a malicious certificate added to the principal. Disabling a workload does not eliminate a second identity created for persistence.</p>
         <p>The response objective is not merely to replace a secret. It is to stop the attacker from authenticating, minting new authority, reaching protected resources, delegating access, or rebuilding persistence.</p>
 
-        <h2>Recognizing machine-identity abuse</h2>
+        <h2 id="recognition">Recognizing machine-identity abuse</h2>
         <p>Traditional user detections—impossible travel, suspicious MFA prompts, or interactive sign-ins—may provide little value when the principal is software. Look instead for changes in how the identity is created, authenticated, authorized, and used.</p>
         <h3>Identity and credential signals</h3>
         <ul><li>A new password, certificate, federated credential, or API key.</li><li>Credential creation outside the approved deployment pipeline.</li><li>A certificate thumbprint absent from the configuration baseline.</li><li>Authentication from an unexpected network, cloud, region, or workload.</li><li>Token requests with an unfamiliar issuer, audience, scope, or subject.</li><li>Tokens minted after the expected workload was stopped.</li><li>A sudden increase in role assumptions or token exchanges.</li><li>Changes to application owners, redirect URIs, permissions, or consent.</li><li>A disabled identity being re-enabled.</li><li>A replacement identity with a similar display name or purpose.</li></ul>
@@ -37,12 +39,12 @@ export default function Article() {
         <ul><li>Access to a new subscription, account, vault, database, or tenant.</li><li>Resource enumeration followed by bulk reads.</li><li>Secret retrieval outside the normal deployment window.</li><li>Privilege or policy modifications.</li><li>New automation jobs, functions, queues, webhooks, or scheduled tasks.</li><li>Requests using a retired key identifier.</li><li>Administrative changes made through an unexpected API or tool.</li><li>Unusual access volume from an otherwise legitimate workload.</li></ul>
         <div className="callout"><strong>Detection principle:</strong> The strongest alert may not be “this credential was used.” It may be “this identity performed an action outside its established workload profile.”</div>
 
-        <h2>Start with an identity graph</h2>
+        <h2 id="identity-graph">Start with an identity graph</h2>
         <p>Before changing the environment, map the principal and every path through which it can obtain, exercise, or delegate authority.</p>
         <ul><li>Immutable principal and application identifiers.</li><li>Tenant, account, subscription, cluster, and namespace.</li><li>Credential identifiers, creation dates, and expiration dates.</li><li>Certificate thumbprints and key identifiers—never private material.</li><li>Workloads and deployment pipelines using the identity.</li><li>Direct and inherited roles, group memberships, permissions, and scopes.</li><li>Consent grants and resource-based policies.</li><li>Impersonation and token-creation privileges.</li><li>Vaults and secret stores accessible to the identity.</li><li>Federated issuers, audiences, subjects, and trust rules.</li><li>Active sessions and maximum token lifetimes.</li><li>Resources contacted before and after the first suspicious event.</li></ul>
         <div className="callout"><strong>Do not ask only where the credential is stored.</strong> Ask what the identity can reach, impersonate, delegate, create, or use to mint another identity.</div>
 
-        <h2>Identity-containment architecture</h2>
+        <h2 id="architecture">Identity-containment architecture</h2>
         <p>Containment must operate at multiple control points. No single identity-provider action is reliable enough for every platform and every previously issued token.</p>
         <figure className="identity-containment" aria-label="Four control points for containing a compromised machine identity">
           <div className="identity-source"><small>AUTHORITY PATH</small><strong>Workload / CI/CD / delegated application</strong><span>federation → issuer → principal → session → resource</span></div>
@@ -52,7 +54,7 @@ export default function Article() {
         </figure>
         <p>Responders may need to disable the principal, remove its federation rule, revoke active tokens, apply an explicit deny at the resource plane, stop the workload, and only then rotate its credentials.</p>
 
-        <h2>The containment sequence</h2>
+        <h2 id="sequence">The containment sequence</h2>
         <h3>0–15 minutes: preserve identifiers and stop new authority</h3>
         <p>Capture principal and application IDs, credential IDs, thumbprints, roles, groups, consent grants, federation configuration, recent token events, source workload, deployment pipeline, and relevant resource activity before deleting anything.</p>
         <p>Then prevent the principal from minting new authority: disable the account or service principal, remove or narrow workload federation, suspend the OAuth application, detach the managed identity, stop the workload, or block the identity at the gateway.</p>
@@ -86,7 +88,7 @@ export default function Article() {
         <p>Managed identities and federated workloads require special attention because there may be no long-lived secret to rotate. The containment target is the trust relationship, role assignment, workload, or token issuer.</p>
         <p>Google recommends short-lived service-account credentials and workload identity federation over user-managed service-account keys. Some services may not record which identity created a short-lived credential, making surrounding workload and resource logs important. <a href="https://cloud.google.com/iam/docs/service-account-creds" rel="noopener noreferrer">Google Cloud IAM documentation ↗</a></p>
 
-        <h2>Hunt for persistence, not only activity</h2>
+        <h2 id="persistence">Hunt for persistence, not only activity</h2>
         <h3>Identity configuration</h3>
         <ul><li>Additional passwords, API keys, certificates, or federated credentials.</li><li>Recently created or lookalike service accounts and applications.</li><li>New application owners, roles, group memberships, or consent grants.</li><li>Modified redirect URIs and custom roles built around the identity.</li></ul>
         <h3>Federation and delegation</h3>
@@ -95,13 +97,13 @@ export default function Article() {
         <ul><li>Scheduled functions, workflows, containers, and automation rules.</li><li>Modified manifests, infrastructure-as-code, pipeline variables, or startup scripts.</li><li>Credentials copied into backups, logs, artifacts, or support bundles.</li><li>Vault, storage, database, messaging, SaaS, and gateway policies granting access independently of central IAM.</li></ul>
         <p>Persistence frequently survives because responders clean the identity provider but do not inspect the resource policy—or clean the resource policy while leaving the token issuer compromised.</p>
 
-        <h2>Preserve evidence without preserving the secret</h2>
+        <h2 id="evidence">Preserve evidence without preserving the secret</h2>
         <p>Correlate immutable principal and application IDs, credential key IDs, certificate thumbprints, issuer, subject, audience, token or session ID, scopes, roles, creation and expiration times, source workload, deployment ID, request ID, target resource, action, and result.</p>
         <pre><code>principal_id · application_id · credential_key_id<br />token_issuer · token_subject · token_audience · session_id<br />issued_at · expires_at · source_ip · workload_instance<br />deployment_id · request_id · target_resource · action · result</code></pre>
         <p>Do not place passwords, private keys, API keys, bearer tokens, or reusable session cookies in case notes. When correlation requires a sensitive value, record a cryptographic fingerprint or the provider’s non-secret credential identifier.</p>
         <p>Normalize identity-provider, cloud, workload, gateway, and target-system events to UTC while retaining each source’s original timestamp and ingestion time.</p>
 
-        <h2>Recovery should be staged</h2>
+        <h2 id="recovery">Recovery should be staged</h2>
         <ol><li><strong>Denied:</strong> The identity cannot authenticate or reach resources.</li><li><strong>Canary:</strong> A replacement receives minimal read-only access in a controlled workload.</li><li><strong>Limited:</strong> Required production permissions return for a small workload set.</li><li><strong>Operational:</strong> Normal capacity returns with enhanced monitoring.</li><li><strong>Hardened:</strong> Temporary controls become durable engineering and policy changes.</li></ol>
         <p>Before full recovery, confirm the administrative and deployment paths are trusted; every credential and trust path has an owner; unauthorized credentials, grants, and roles are removed; sessions are revoked or expired; workloads were rebuilt; resource policies were reviewed; retired credential use has stopped; high-risk activity was investigated; and a rollback method exists.</p>
 
