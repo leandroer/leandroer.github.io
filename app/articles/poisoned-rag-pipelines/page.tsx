@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { IncidentPanel, ArticleNavigation } from "../../components/ArticleOperations";
 export const metadata: Metadata = {
   alternates: { canonical: "/articles/poisoned-rag-pipelines/" },"title":"When retrieval becomes the attack path","description":"Incident response for poisoned RAG pipelines: trace contamination, contain retrieval, preserve evidence, and rebuild trusted indexes."};
 // Build-time markup generated from the exact approved private draft; no runtime input.
@@ -11,7 +12,7 @@ const approvedHtml = [
   "<blockquote>",
   "<p><strong>Operating principle:</strong> Do not treat a poisoned document as a single bad file. Treat it as a data-integrity incident affecting every system that transformed, retrieved, trusted, or acted upon that file.</p>",
   "</blockquote>",
-  "<h2>When suspicious retrieval becomes an incident</h2>",
+  "<h2 id=\"incident\">When suspicious retrieval becomes an incident</h2>",
   "<p>A poor answer is not automatically a security incident. Escalate when there is evidence that retrieval integrity, authorization, or system behavior may have been deliberately or materially altered.</p>",
   "<p>Signals include:</p>",
   "<ul>",
@@ -30,7 +31,7 @@ const approvedHtml = [
   "</ul>",
   "<p>Microsoft describes grounding compromise as especially persistent because it attacks trusted supporting systems rather than the foundation model. Poisoned documents, embeddings, indexes, and ranking metadata can repeatedly influence downstream behavior. <a href=\"https://learn.microsoft.com/en-us/security/zero-trust/catalog-ai-attack-techniques/grounding-data-compromise\">Microsoft: Grounding Data Compromise</a></p>",
   "<p>OWASP similarly identifies poisoned embeddings and vector stores as integrity risks capable of manipulating outputs and exposing information. <a href=\"https://genai.owasp.org/llmrisk/llm082025-vector-and-embedding-weaknesses/\">OWASP LLM08: Vector and Embedding Weaknesses</a></p>",
-  "<h2>Understand the two pipelines</h2>",
+  "<h2 id=\"pipelines\">Understand the two pipelines</h2>",
   "<p>A useful investigation separates RAG into two connected paths.</p>",
   "<p>The <strong>indexing path</strong>:</p>",
   "<ol>",
@@ -57,7 +58,7 @@ const approvedHtml = [
   "<blockquote>",
   "<p>Which source version entered which ingestion job, produced which chunks and embeddings, appeared in which retrievals, influenced which prompts, and caused which decisions or actions?</p>",
   "</blockquote>",
-  "<h2>RAG integrity and containment architecture</h2>",
+  "<h2 id=\"architecture\">RAG integrity and containment architecture</h2>",
   "<figure class=\"approved-architecture\" aria-label=\"TRUST DOMAIN A — AUTHORITATIVE SOURCES\"><div class=\"architecture-label\">CONTROL ARCHITECTURE · TRUST BOUNDARIES &amp; EVIDENCE</div><div class=\"architecture-lanes\"><section class=\"architecture-lane lane-S\"><h3>TRUST DOMAIN A — AUTHORITATIVE SOURCES</h3><ol><li><b>S1</b><span>Internal repositories<small class=\"node-connections\">→ G1 · ⇢ E1</small></span></li><li><b>S2</b><span>Approved SaaS and APIs<small class=\"node-connections\">→ G1 · ⇢ E1</small></span></li><li><b>S3</b><span>User uploads / external content<small class=\"node-connections\">→ G1 · ⇢ E1</small></span></li></ol></section><section class=\"architecture-lane lane-G1\"><h3>SECURITY BOUNDARY</h3><ol><li><b>G1</b><span>INGESTION GATE<br/>identity · source approval · provenance<br/>classification · integrity · malware / injection scan<small class=\"node-connections\">→ I1</small></span></li></ol></section><section class=\"architecture-lane lane-I\"><h3>TRUST DOMAIN B — INDEXING CONTROL PLANE</h3><ol><li><b>I1</b><span>Parse and normalize<br/>remove active / hidden content<small class=\"node-connections\">→ I2 · ⇢ E2</small></span></li><li><b>I2</b><span>Chunk<br/>retain source + version + ACL<small class=\"node-connections\">→ I3 · ⇢ E2</small></span></li><li><b>I3</b><span>Embed<br/>record model + configuration<small class=\"node-connections\">→ I4 · ⇢ E2</small></span></li><li><b>I4</b><span>Vector and metadata index<br/>versioned collection<small class=\"node-connections\">→ G2 · ⇢ E3</small></span></li></ol></section><section class=\"architecture-lane lane-G2\"><h3>SECURITY BOUNDARY</h3><ol><li><b>G2</b><span>RETRIEVAL GATE<br/>identity · tenant · authorization<br/>trust · freshness · policy<small class=\"node-connections\">→ R1</small></span></li></ol></section><section class=\"architecture-lane lane-R\"><h3>TRUST DOMAIN C — RUNTIME</h3><ol><li><b>R1</b><span>Top-K retrieval<br/>chunk IDs + scores + filters<small class=\"node-connections\">→ R2 · ⇢ E4</small></span></li><li><b>R2</b><span>Prompt assembly<br/>instructions separated from data<small class=\"node-connections\">→ R3 · ⇢ E5</small></span></li><li><b>R3</b><span>Model / agent<small class=\"node-connections\">→ R4 · → R5 · ⇢ E5</small></span></li><li><b>R4</b><span>Tools and downstream systems<small class=\"node-connections\">⇢ E5</small></span></li><li><b>R5</b><span>Caches and agent memory<small class=\"node-connections\">⇢ R2 · ⇢ E5</small></span></li></ol></section><section class=\"architecture-lane lane-E\"><h3>EVIDENCE PLANE — IMMUTABLE CORRELATION</h3><ol><li><b>E1</b><span>source ID · version · digest · owner<small class=\"node-connections\"></small></span></li><li><b>E2</b><span>job ID · parser · chunk IDs · embedding version<small class=\"node-connections\"></small></span></li><li><b>E3</b><span>collection · record IDs · upserts · deletes<small class=\"node-connections\"></small></span></li><li><b>E4</b><span>query · identity · filters · top-K · scores<small class=\"node-connections\"></small></span></li><li><b>E5</b><span>prompt hash · response · tool calls · memory writes<small class=\"node-connections\"></small></span></li></ol></section><section class=\"architecture-lane lane-C\"><h3>CONTAINMENT PLANE</h3><ol><li><b>C1</b><span>Quarantine sources<br/>freeze ingestion<small class=\"node-connections\">⇢ G1</small></span></li><li><b>C2</b><span>Pause index writes<br/>snapshot affected collections<small class=\"node-connections\">⇢ I4</small></span></li><li><b>C3</b><span>Deny poisoned records<br/>disable retrieval path<small class=\"node-connections\">⇢ G2</small></span></li><li><b>C4</b><span>Purge caches / isolate memory<br/>stop unsafe tools<small class=\"node-connections\">⇢ R3 · ⇢ R5</small></span></li><li><b>C5</b><span>Rebuild from trusted versions<br/>canary before release<small class=\"node-connections\">⇢ I1</small></span></li></ol></section></div><details class=\"architecture-connections\"><summary>Trace every data, evidence, and control connection ↗</summary><pre>S1 --&gt; G1",
   "S2 --&gt; G1",
   "S3 --&gt; G1",
@@ -88,7 +89,7 @@ const approvedHtml = [
   "<p>The ingestion gate determines whether content is eligible to influence the system.</p>",
   "<p>The retrieval gate determines whether a specific identity may receive and use specific chunks at query time.</p>",
   "<p>Neither decision should be delegated to the model.</p>",
-  "<h2>The first 30 minutes</h2>",
+  "<h2 id=\"first-30\">The first 30 minutes</h2>",
   "<h3>0–10 minutes: stop additional contamination</h3>",
   "<p>Start by controlling writes.</p>",
   "<ul>",
@@ -137,7 +138,7 @@ const approvedHtml = [
   "<li>Responder actions</li>",
   "</ul>",
   "<p>NIST SP 800-61 Rev. 3 places incident response within broader cybersecurity risk management and emphasizes coordinated detection, response, recovery, and improvement. <a href=\"https://csrc.nist.gov/pubs/sp/800/61/r3/final\">NIST SP 800-61 Rev. 3</a></p>",
-  "<h2>Build the affected window from data lineage</h2>",
+  "<h2 id=\"lineage\">Build the affected window from data lineage</h2>",
   "<p>The affected window is not simply the time between document upload and discovery.</p>",
   "<p>Use at least four timestamps:</p>",
   "<ul>",
@@ -307,7 +308,7 @@ const approvedHtml = [
   "<li>Retrieval followed by credential, IAM, code, payment, or messaging activity</li>",
   "</ul>",
   "<p>OWASP recommends authenticated sources, fine-grained vector-store access, logical separation, data validation, and immutable retrieval logs. <a href=\"https://genai.owasp.org/llmrisk/llm082025-vector-and-embedding-weaknesses/\">OWASP LLM08</a></p>",
-  "<h2>Quarantine without destroying evidence</h2>",
+  "<h2 id=\"quarantine\">Quarantine without destroying evidence</h2>",
   "<p>Quarantine should sever influence while retaining the material needed to reconstruct the incident.</p>",
   "<p>For the source:</p>",
   "<ul>",
@@ -355,7 +356,7 @@ const approvedHtml = [
   "</ol>",
   "<p>Each derivative should be linked to its source through stable identifiers and version metadata.</p>",
   "<p>If the system cannot answer, “Which derived objects came from this source version?”, responders cannot prove that eradication is complete.</p>",
-  "<h2>Hunt downstream from the retrieved chunk</h2>",
+  "<h2 id=\"downstream\">Hunt downstream from the retrieved chunk</h2>",
   "<p>Start with retrieval traces, not the conversation transcript.</p>",
   "<p>For each suspicious chunk:</p>",
   "<ol>",
@@ -399,7 +400,7 @@ const approvedHtml = [
   "<li>Retain a rollback path.</li>",
   "</ul>",
   "<p>NIST’s Generative AI Profile emphasizes lifecycle risk management and provenance as mechanisms for tracing origins, transformations, and downstream effects. <a href=\"https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence\">NIST AI 600-1</a></p>",
-  "<h2>Recovery validation</h2>",
+  "<h2 id=\"recovery\">Recovery validation</h2>",
   "<p>Do not restore retrieval because the index build succeeded.</p>",
   "<h3>Integrity tests</h3>",
   "<ul>",
@@ -493,4 +494,4 @@ const approvedHtml = [
   "</blockquote>",
   ""
 ].join("\n");
-export default function Article(){return <main className="article-page"><header className="site-header"><Link className="brand" href="/">LR INFOSEC.LAB</Link><nav aria-label="Primary navigation"><Link href="/articles">Articles</Link><Link href="/resources">Resources</Link><a href="/IncidentResponse/">Framework</a></nav><Link className="header-cta" href="/articles">All field notes ↗</Link></header><section className="article-head"><p className="eyebrow">FIELD NOTE 011 · AI SECURITY · OCT 16, 2026</p><h1>When retrieval becomes the attack path</h1><p className="dek">Incident response for poisoned RAG pipelines: trace contamination, contain retrieval, preserve evidence, and rebuild trusted indexes.</p><p className="publication-history">Originally scheduled OCT 16, 2026. Published 20 OCT 2026 after recovery of the approved editorial backlog.</p></section><div className="article-body approved-article-body"><article className="prose" dangerouslySetInnerHTML={{__html:approvedHtml}} /></div></main>;}
+export default function Article(){return <main className="article-page" id="top"><header className="site-header"><Link className="brand" href="/">LR INFOSEC.LAB</Link><nav aria-label="Primary navigation"><Link href="/articles">Articles</Link><Link href="/resources">Resources</Link><a href="/IncidentResponse/">Framework</a></nav><Link className="header-cta" href="/articles">All field notes ↗</Link></header><section className="article-head"><p className="eyebrow">FIELD NOTE 011 · AI SECURITY · OCT 16, 2026</p><h1>When retrieval becomes the attack path</h1><p className="dek">Incident response for poisoned RAG pipelines: trace contamination, contain retrieval, preserve evidence, and rebuild trusted indexes.</p><p className="publication-history">Originally scheduled OCT 16, 2026. Published 20 OCT 2026 after recovery of the approved editorial backlog.</p></section><IncidentPanel slug="poisoned-rag-pipelines"/><div className="article-body approved-article-body"><ArticleNavigation slug="poisoned-rag-pipelines"/><article className="prose" dangerouslySetInnerHTML={{__html:approvedHtml}} /></div></main>;}

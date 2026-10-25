@@ -1,6 +1,7 @@
 import { publishedArticles } from "../lib/articles";
 import Link from "next/link";
 import type { Metadata } from "next";
+import ArticleExplorer from "../components/ArticleExplorer";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/articles/" },
@@ -18,6 +19,6 @@ export default function Articles() {
       <Link className="header-cta" href="/">Back to lab ↗</Link>
     </header>
     <section className="articles-hero"><p className="eyebrow"><span className="live-dot"/>FIELD NOTES</p><h1>Research for<br/><em>working Defenders.</em></h1><p>Short, technical, and grounded in operational reality.</p></section>
-    <section className="article-index">{articles.map((a) => <Link className="article-row" href={a.href} key={a.title}><span className="meta">PUBLISHED {a.date}<br/>{a.scheduledDate !== a.publishDate && <>SCHEDULED {a.scheduledDate}<br/></>}{a.kind}</span><div><h2>{a.title}</h2><p>{a.desc}</p></div><span className="meta">{a.time} READ</span><span>↗</span></Link>)}</section>
+    <ArticleExplorer articles={articles} />
   </main>;
 }

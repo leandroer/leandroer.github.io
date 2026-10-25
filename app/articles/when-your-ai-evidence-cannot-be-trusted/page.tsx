@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { IncidentPanel, ArticleNavigation } from "../../components/ArticleOperations";
 export const metadata: Metadata = {
   alternates: { canonical: "/articles/when-your-ai-evidence-cannot-be-trusted/" },"title":"When your AI evidence cannot be trusted","description":"Preserve execution paths, provenance, prompts, retrieval, memory, tool actions, and independently verifiable AI evidence."};
 // Build-time markup generated from the exact approved private draft; no runtime input.
@@ -9,7 +10,7 @@ const approvedHtml = [
   "<blockquote>",
   "<p><strong>Operating principle:</strong> Preserve the execution path, not only the conversation. Every important AI action should be independently verifiable outside the model.</p>",
   "</blockquote>",
-  "<h2>The evidence problem</h2>",
+  "<h2 id=\"evidence-problem\">The evidence problem</h2>",
   "<p>Traditional application investigations already require correlation across endpoints, identities, networks, applications, and cloud control planes. Agentic systems add several less stable layers:</p>",
   "<ul>",
   "<li>Dynamically assembled prompts.</li>",
@@ -26,7 +27,7 @@ const approvedHtml = [
   "<p>Each layer can record a different version of the same event.</p>",
   "<p>An assistant might say, “I did not send the message,” while the messaging platform contains a delivery receipt. A trace might record a proposed cloud action but omit whether the target accepted it. A current memory record may no longer contain the value used during the incident. A prompt stored in source control may differ from the effective prompt assembled at runtime.</p>",
   "<p>The investigation therefore needs provenance: evidence of where each record originated, how it moved, whether it changed, and which independent system can confirm it.</p>",
-  "<h2>An evidence-provenance architecture</h2>",
+  "<h2 id=\"architecture\">An evidence-provenance architecture</h2>",
   "<figure class=\"approved-architecture\" aria-label=\"EXECUTION SOURCES\"><div class=\"architecture-label\">CONTROL ARCHITECTURE · TRUST BOUNDARIES &amp; EVIDENCE</div><div class=\"architecture-lanes\"><section class=\"architecture-lane lane-Sources\"><h3>EXECUTION SOURCES</h3><ol><li><b>U</b><span>User/API gateway<small class=\"node-connections\">→ C</small></span></li><li><b>R</b><span>Agent runtime<small class=\"node-connections\">→ C</small></span></li><li><b>G</b><span>Guardrail or policy engine<small class=\"node-connections\">→ C</small></span></li><li><b>K</b><span>Retrieval pipeline<small class=\"node-connections\">→ C</small></span></li><li><b>M</b><span>Memory service<small class=\"node-connections\">→ C</small></span></li><li><b>T</b><span>Tool gateway<small class=\"node-connections\">→ C</small></span></li><li><b>I</b><span>Identity provider<small class=\"node-connections\">→ C</small></span></li><li><b>D</b><span>Target systems<small class=\"node-connections\">→ C</small></span></li></ol></section><section class=\"architecture-lane lane-Collection\"><h3>CONTROLLED COLLECTION</h3><ol><li><b>C</b><span>Event envelope<br/>event ID · trace ID · call ID<br/>UTC time · source · sequence<small class=\"node-connections\">→ V</small></span></li><li><b>V</b><span>Validation<br/>schema · identity · clock skew<br/>duplicate and gap detection<small class=\"node-connections\">→ H</small></span></li><li><b>H</b><span>Integrity record<br/>content digest · previous digest<br/>signed export manifest<small class=\"node-connections\">→ S1 · → S2</small></span></li></ol></section><section class=\"architecture-lane lane-Storage\"><h3>EVIDENCE STORES</h3><ol><li><b>S1</b><span>Restricted raw evidence<br/>encrypted · access logged<small class=\"node-connections\">→ S3 · → X</small></span></li><li><b>S2</b><span>Redacted security telemetry<br/>searchable · alertable<small class=\"node-connections\">→ X</small></span></li><li><b>S3</b><span>Immutable case export<br/>retention locked<small class=\"node-connections\">→ X</small></span></li></ol></section><section class=\"architecture-lane lane-Investigation\"><h3>INVESTIGATION</h3><ol><li><b>X</b><span>Correlation graph<small class=\"node-connections\">→ Q</small></span></li><li><b>Q</b><span>Confidence assessment<small class=\"node-connections\">→ A</small></span></li><li><b>A</b><span>Incident action ledger<small class=\"node-connections\"></small></span></li></ol></section></div><details class=\"architecture-connections\"><summary>Trace every data, evidence, and control connection ↗</summary><pre>U --&gt; C",
   "R --&gt; C",
   "G --&gt; C",
@@ -44,7 +45,7 @@ const approvedHtml = [
   "S3 --&gt; X",
   "X --&gt; Q --&gt; A</pre></details><figcaption>Read top to bottom on mobile. Node identifiers connect the trust domains, collection points, and control paths; dotted paths denote evidence or control connections.</figcaption></figure>",
   "<p>The diagram deliberately separates raw evidence from operational security telemetry. A SIEM does not need unrestricted prompt contents to detect suspicious behavior. Investigators may need selected content, but that evidence belongs in a more restricted store with access logging, retention controls, and chain-of-custody records.</p>",
-  "<h2>1. Treat the transcript as a partial observation</h2>",
+  "<h2 id=\"transcript\">1. Treat the transcript as a partial observation</h2>",
   "<p>A visible transcript usually contains the user messages and final assistant responses. Depending on the implementation, it may omit:</p>",
   "<ul>",
   "<li>System and developer instructions.</li>",
@@ -93,7 +94,7 @@ const approvedHtml = [
   "</tr>",
   "</tbody></table>",
   "<p>A model statement such as “the file was deleted” is an investigative lead. The storage system’s audit event and resulting object state are evidence of whether deletion occurred.</p>",
-  "<h2>2. Correlate tool calls through execution</h2>",
+  "<h2 id=\"tools\">2. Correlate tool calls through execution</h2>",
   "<p>A defensible tool record needs to connect four separate moments:</p>",
   "<ol>",
   "<li>The model proposed an action.</li>",
@@ -123,7 +124,7 @@ const approvedHtml = [
   "<p>OpenAI’s Agents SDK uses traces and spans to represent generations, tool calls, handoffs, guardrails, and custom events. It also requires tool-call identifiers to remain associated with their canonical invocations and outputs. <a href=\"https://openai.github.io/openai-agents-python/tracing/\">OpenAI Agents SDK tracing</a> and <a href=\"https://openai.github.io/openai-agents-python/ref/models/interface/\">model interface</a></p>",
   "<p>Amazon Bedrock traces can include orchestration inputs, action-group invocations, knowledge-base queries, observations, failures, agent versions, sessions, and collaborator chains. However, trace collection must be enabled for the invocation. <a href=\"https://docs.aws.amazon.com/bedrock/latest/userguide/trace-events.html\">Amazon Bedrock agent tracing</a></p>",
   "<p>Neither trace should replace the target system’s audit log. The runtime can prove what it attempted. The target system is usually better positioned to prove what changed.</p>",
-  "<h2>3. Preserve memory as versioned state</h2>",
+  "<h2 id=\"memory\">3. Preserve memory as versioned state</h2>",
   "<p>Agent memory can be overwritten, summarized, merged, expired, or deleted before responders inspect it.</p>",
   "<p>A current memory record does not necessarily reveal:</p>",
   "<ul>",
@@ -155,7 +156,7 @@ const approvedHtml = [
   "           → model/configuration → generated summary → active memory version",
   "</code></pre>",
   "<p>During an incident, disable further writes or snapshot the affected memory partition before inspecting it. Otherwise, investigative activity or continued agent execution may alter the state being investigated.</p>",
-  "<h2>4. Capture the effective prompt</h2>",
+  "<h2 id=\"prompt\">4. Capture the effective prompt</h2>",
   "<p>A prompt template in Git does not prove what the model received.</p>",
   "<p>The effective prompt may combine:</p>",
   "<ul>",
@@ -241,7 +242,7 @@ const approvedHtml = [
   "approver",
   "</code></pre>",
   "<p>At runtime, emit that manifest identifier into each trace. Then alert when active telemetry reports a combination that does not correspond to an approved manifest.</p>",
-  "<h2>7. Timestamp integrity is an architectural control</h2>",
+  "<h2 id=\"timestamps\">7. Timestamp integrity is an architectural control</h2>",
   "<p>A timestamp is not automatically trustworthy because it ends in <code>Z</code>.</p>",
   "<p>Agent evidence can cross:</p>",
   "<ul>",
@@ -378,7 +379,7 @@ const approvedHtml = [
   "}",
   "</code></pre>",
   "<p>Cryptographic digests provide integrity evidence only if the trusted digest or signed manifest is stored separately from the data an attacker could alter.</p>",
-  "<h2>10. Minimum viable forensic record</h2>",
+  "<h2 id=\"forensic-record\">10. Minimum viable forensic record</h2>",
   "<table>",
   "<thead>",
   "<tr>",
@@ -520,4 +521,4 @@ const approvedHtml = [
   "</blockquote>",
   ""
 ].join("\n");
-export default function Article(){return <main className="article-page"><header className="site-header"><Link className="brand" href="/">LR INFOSEC.LAB</Link><nav aria-label="Primary navigation"><Link href="/articles">Articles</Link><Link href="/resources">Resources</Link><a href="/IncidentResponse/">Framework</a></nav><Link className="header-cta" href="/articles">All field notes ↗</Link></header><section className="article-head"><p className="eyebrow">FIELD NOTE 009 · AI SECURITY · SEP 11, 2026</p><h1>When your AI evidence cannot be trusted</h1><p className="dek">Preserve execution paths, provenance, prompts, retrieval, memory, tool actions, and independently verifiable AI evidence.</p><p className="publication-history">Originally scheduled SEP 11, 2026. Published 20 OCT 2026 after recovery of the approved editorial backlog.</p></section><div className="article-body approved-article-body"><article className="prose" dangerouslySetInnerHTML={{__html:approvedHtml}} /></div></main>;}
+export default function Article(){return <main className="article-page" id="top"><header className="site-header"><Link className="brand" href="/">LR INFOSEC.LAB</Link><nav aria-label="Primary navigation"><Link href="/articles">Articles</Link><Link href="/resources">Resources</Link><a href="/IncidentResponse/">Framework</a></nav><Link className="header-cta" href="/articles">All field notes ↗</Link></header><section className="article-head"><p className="eyebrow">FIELD NOTE 009 · AI SECURITY · SEP 11, 2026</p><h1>When your AI evidence cannot be trusted</h1><p className="dek">Preserve execution paths, provenance, prompts, retrieval, memory, tool actions, and independently verifiable AI evidence.</p><p className="publication-history">Originally scheduled SEP 11, 2026. Published 20 OCT 2026 after recovery of the approved editorial backlog.</p></section><IncidentPanel slug="when-your-ai-evidence-cannot-be-trusted"/><div className="article-body approved-article-body"><ArticleNavigation slug="when-your-ai-evidence-cannot-be-trusted"/><article className="prose" dangerouslySetInnerHTML={{__html:approvedHtml}} /></div></main>;}

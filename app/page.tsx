@@ -20,9 +20,9 @@ const resources = [
 
 export default function Home() {
   const latest = publishedArticles()[0];
-  const latestVisualLabel = latest.href === "/articles/unauthorized-agent-delegation/"
-    ? "AGENT DELEGATION / 012"
-    : "RETRIEVAL INTEGRITY / 011";
+  const latestFocus = latest.scenarios[0];
+  const latestUpdated = latest.date;
+  const latestVisualLabel = `${latestFocus.toLocaleUpperCase()} / ${latest.note}`;
   return (
     <main>
       <header className="site-header">
@@ -42,12 +42,12 @@ export default function Home() {
           <div className="trust-line"><span>Independent</span><span>Evidence-led</span><span>Built for defenders</span></div>
         </div>
         <div className="signal-panel architect-board" aria-label="Current research notebook">
-          <div className="panel-head"><span>WORKING NOTES / 2026-09</span><span className="status">LAST UPDATED 27 SEP</span></div>
-          <div className="board-title"><span>CURRENT FOCUS</span><h2>Machine<br/>identities</h2><p>Containing principals, credentials, tokens, trust paths, and the systems that can mint additional authority.</p></div>
+          <div className="panel-head"><span>WORKING NOTES / {latest.publishDate.slice(0, 7)}</span><span className="status">LAST UPDATED {latestUpdated}</span></div>
+          <div className="board-title"><span>CURRENT FOCUS</span><h2>{latestFocus}</h2><p>{latest.desc}</p></div>
           <div className="board-rule" />
-          <div className="board-grid"><div><small>01</small><b>Mint</b><span>Can it obtain new authority?</span></div><div><small>02</small><b>Revoke</b><span>Which sessions remain?</span></div><div><small>03</small><b>Deny</b><span>What can resources block?</span></div><div><small>04</small><b>Rotate</b><span>Is the control plane clean?</span></div></div>
-          <div className="margin-note">response rule:<br/><strong>principal ≠ credential</strong></div>
-          <div className="panel-foot"><span>NOTE / 010</span><span>STATUS / PUBLISHED</span><span>READ / 13 MIN</span></div>
+          <div className="board-grid">{latest.phases.slice(0, 4).map((phase, index) => <div key={phase}><small>{String(index + 1).padStart(2, "0")}</small><b>{phase}</b><span>{latest.technologies[index] ?? latest.kind}</span></div>)}</div>
+          <div className="margin-note">response lens:<br/><strong>{latest.scenarios[1] ?? latest.kind}</strong></div>
+          <div className="panel-foot"><span>NOTE / {latest.note}</span><span>VERIFIED / {latest.verifiedDate}</span><span>READ / {latest.time}</span></div>
         </div>
       </section>
 
