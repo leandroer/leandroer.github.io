@@ -88,5 +88,15 @@
     "time": "15 MIN",
     "href": "/articles/poisoned-rag-pipelines/",
     "scheduledDate": "2026-10-16"
+  },
+  {
+    "date": "30 OCT 2026",
+    "publishDate": "2026-10-30",
+    "kind": "AI SECURITY",
+    "title": "Detecting unauthorized agent delegation and task propagation",
+    "desc": "Trace parent-child agents, delegated authority, task queues, containment decisions, and confirmed downstream consequences.",
+    "time": "22 MIN",
+    "href": "/articles/unauthorized-agent-delegation/",
+    "scheduledDate": "2026-10-30"
   }
 ]

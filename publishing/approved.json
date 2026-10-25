@@ -35,6 +35,23 @@
         "turnId": "01a13c88-9114-7a51-bd6a-3e1b2630fd03"
       },
       "sourceSHA256": "6acb24919ff3ae0715f2f95677c861a0289a415c861c4e04098f222cb28dc98d"
+    },
+    {
+      "slug": "unauthorized-agent-delegation",
+      "title": "Detecting unauthorized agent delegation and task propagation",
+      "date": "2026-10-30",
+      "note": "012",
+      "description": "Trace parent-child agents, delegated authority, task queues, containment decisions, and confirmed downstream consequences.",
+      "approvedAt": "2026-10-25",
+      "turn": "user-approval-2026-10-25-field-note-012",
+      "path": "/articles/unauthorized-agent-delegation/",
+      "source": "app/articles/unauthorized-agent-delegation/page.tsx",
+      "approval": {
+        "approvedAt": "2026-10-25",
+        "threadId": "019f7057-cbe2-75b3-a676-583ff84ea557",
+        "turnId": "user-approval-2026-10-25-field-note-012"
+      },
+      "sourceSHA256": "901c35b5e77767272dcf6bb42ea27346b61b72296e4f792089359bb83960f819"
     }
   ]
 }

@@ -20,6 +20,9 @@ const resources = [
 
 export default function Home() {
   const latest = publishedArticles()[0];
+  const latestVisualLabel = latest.href === "/articles/unauthorized-agent-delegation/"
+    ? "AGENT DELEGATION / 012"
+    : "RETRIEVAL INTEGRITY / 011";
   return (
     <main>
       <header className="site-header">
@@ -75,7 +78,7 @@ export default function Home() {
 
       <section className="section latest">
         <div className="section-label"><span>03 / FIELD NOTES</span></div>
-        <div className="featured-article"><div className="article-visual"><span>RETRIEVAL INTEGRITY / 011</span><div className="agent-map"><i/><i/><i/><b>ID</b></div></div><div className="article-copy"><p className="eyebrow">LATEST · {latest.kind} · {latest.time} READ</p><h2>{latest.title}</h2><p>{latest.desc}</p><Link className="text-link" href={latest.href}>Read field note <span>→</span></Link></div></div>
+        <div className="featured-article"><div className="article-visual"><span>{latestVisualLabel}</span><div className="agent-map"><i/><i/><i/><b>ID</b></div></div><div className="article-copy"><p className="eyebrow">LATEST · {latest.kind} · {latest.time} READ</p><h2>{latest.title}</h2><p>{latest.desc}</p><Link className="text-link" href={latest.href}>Read field note <span>→</span></Link></div></div>
         <div className="publish-note"><div><span>Articles live as simple content files—easy to draft, review, schedule, and share.</span></div><Link href="/articles">Browse all articles ↗</Link></div>
       </section>
 
