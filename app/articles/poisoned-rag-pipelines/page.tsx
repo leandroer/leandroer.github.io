@@ -85,6 +85,7 @@ const approvedHtml = [
   "C4 -. control .-&gt; R3",
   "C4 -. control .-&gt; R5",
   "C5 -. recovery .-&gt; I1</pre></details><figcaption>Read top to bottom on mobile. Node identifiers connect the trust domains, collection points, and control paths; dotted paths denote evidence or control connections.</figcaption></figure>",
+  "<aside class=\"architecture-key\" aria-label=\"RAG architecture identifier key\"><strong>Diagram key</strong><dl><div><dt>S1–S3</dt><dd>Authoritative, approved, and externally supplied sources</dd></div><div><dt>G1</dt><dd>Ingestion security gate</dd></div><div><dt>I1–I4</dt><dd>Parse, chunk, embed, and index stages</dd></div><div><dt>G2</dt><dd>Identity-aware retrieval gate</dd></div><div><dt>R1–R5</dt><dd>Retrieval, prompt, agent, tool, cache, and memory runtime</dd></div><div><dt>E1–E5</dt><dd>Immutable evidence collection points</dd></div><div><dt>C1–C5</dt><dd>Containment and trusted-rebuild controls</dd></div><div><dt>→ / ⇢</dt><dd>Data flow / evidence or control connection</dd></div></dl></aside>",
   "<p>The two gates are the primary security boundaries.</p>",
   "<p>The ingestion gate determines whether content is eligible to influence the system.</p>",
   "<p>The retrieval gate determines whether a specific identity may receive and use specific chunks at query time.</p>",

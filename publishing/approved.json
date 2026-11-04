@@ -15,9 +15,11 @@
       "approval": {
         "approvedAt": "2026-09-06",
         "threadId": "019f7057-cbe2-75b3-a676-583ff84ea557",
-        "turnId": "01a076db-3087-7ff2-b928-1e03002da35f"
+      "turnId": "01a076db-3087-7ff2-b928-1e03002da35f",
+      "revisedAt": "2026-11-04",
+      "revisionTurnId": "user-request-2026-11-04-cross-article-readability"
       },
-      "sourceSHA256": "ad555b8ad444fbc359408af3c989fe8aed9bb2d3e40b5185688b2ab03ce60621"
+    "sourceSHA256": "204ab366c9574b37b0743f311a7e95d42eb7fba02e0e2894e449c65d99b78d5b"
     },
     {
       "slug": "poisoned-rag-pipelines",
@@ -32,9 +34,11 @@
       "approval": {
         "approvedAt": "2026-10-14",
         "threadId": "019f7057-cbe2-75b3-a676-583ff84ea557",
-        "turnId": "01a13c88-9114-7a51-bd6a-3e1b2630fd03"
+      "turnId": "01a13c88-9114-7a51-bd6a-3e1b2630fd03",
+      "revisedAt": "2026-11-04",
+      "revisionTurnId": "user-request-2026-11-04-cross-article-readability"
       },
-      "sourceSHA256": "9c1c09eddee972a94f55ac7563714121d72317f5dad168df01556f608fda32e6"
+    "sourceSHA256": "1281eae491047992ba59d0ae87d850287c956a2ff4c1e79299dbeda0a91820b7"
     },
     {
       "slug": "unauthorized-agent-delegation",
