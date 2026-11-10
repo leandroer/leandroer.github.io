@@ -58,6 +58,23 @@
       "revisionTurnId": "user-request-2026-11-04-field-note-012-readability"
       },
     "sourceSHA256": "f16148c6f2e051ad313594f3e0ec35445d89395d0797e2d5dd8664a166ce7956"
+    },
+    {
+      "slug": "recovering-ai-memory-and-vector-stores",
+      "title": "Recovery criteria for compromised AI memory and vector stores",
+      "date": "2026-11-13",
+      "note": "013",
+      "description": "Rebuild compromised vector and memory state from trusted sources, test it with measurable gates, and release it through canaries with proven rollback.",
+      "approvedAt": "2026-11-10",
+      "turn": "user-approval-2026-11-10-field-note-013",
+      "path": "/articles/recovering-ai-memory-and-vector-stores/",
+      "source": "app/articles/recovering-ai-memory-and-vector-stores/page.tsx",
+      "approval": {
+        "approvedAt": "2026-11-10",
+        "threadId": "019f7057-cbe2-75b3-a676-583ff84ea557",
+        "turnId": "user-approval-2026-11-10-field-note-013"
+      },
+      "sourceSHA256": "b60a99d03171004a9520500e915ec27ec5a32d94c0b02d1ce28f29fa2729fdd9"
     }
   ]
 }

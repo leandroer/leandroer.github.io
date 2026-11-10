@@ -101,4 +101,13 @@ export const articleOperations: Record<string, ArticleOperations> = {
     exit: "No new edges can form, every descendant has a disposition, credentials are revoked, and high-impact targets reject further activity.",
     sections: [{id:"incident",title:"Running incident"},{id:"first-15",title:"First 15 minutes"},{id:"transaction",title:"Security transaction"},{id:"architecture",title:"Architecture"},{id:"event",title:"Delegation event"},{id:"detection",title:"Detection"},{id:"first-45",title:"First 45 minutes"},{id:"containment",title:"Containment"},{id:"recovery",title:"Recovery"}],
   },
+  "recovering-ai-memory-and-vector-stores": {
+    verified: "10 November 2026",
+    trigger: "Confirmed or probable corruption of persistent agent memory, retrieval indexes, summaries, caches, or the source-to-vector transformation path.",
+    actions: ["Freeze writes", "Preserve the compromised state", "Identify the last independently trusted source versions", "Build the derivative graph", "Assign recovery authority and rollback ownership"],
+    evidence: "Memory CRUD events, source versions and digests, ingestion jobs, parser/chunker/embedding versions, vector mutations, retrieval traces, cache keys, prompt assemblies, tool calls, target audit events, snapshots, and manifests.",
+    authority: "Destructive invalidation, point-in-time restore, index rebuild, memory deletion, production-alias switching, tool restoration, and acceptance of unverified residual state.",
+    exit: "The candidate passes every required test family, no known poisoned derivative is reachable, monitoring covers the recovered path, rollback is tested, and security and service owners approve the evidence package.",
+    sections: [{id:"incident",title:"Recovery incident"},{id:"snapshot-roles",title:"Snapshot roles"},{id:"architecture",title:"Recovery architecture"},{id:"trusted-boundary",title:"Trusted boundary"},{id:"derivative-graph",title:"Derivative graph"},{id:"vector-rebuild",title:"Vector rebuild"},{id:"memory-rebuild",title:"Memory rebuild"},{id:"test-families",title:"Six test families"},{id:"release-gates",title:"Release gates"},{id:"canary-release",title:"Canary release"},{id:"rollback-triggers",title:"Rollback triggers"},{id:"authorization-packet",title:"Authorization packet"},{id:"responder-worksheet",title:"Responder worksheet"}],
+  },
 };
