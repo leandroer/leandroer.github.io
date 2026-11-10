@@ -158,5 +158,21 @@
     "technologies": ["AI agents", "Task queues", "Identity", "OpenTelemetry"],
     "phases": ["Detection", "Containment", "Evidence", "Recovery"],
     "artifactTypes": ["Field note", "Architecture", "Detection query", "Worksheet", "Checklist"]
+  },
+  {
+    "date": "13 NOV 2026",
+    "publishDate": "2026-11-13",
+    "kind": "AI SECURITY",
+    "title": "Recovery criteria for compromised AI memory and vector stores",
+    "desc": "Rebuild compromised vector and memory state from trusted sources, test it with measurable gates, and release it through canaries with proven rollback.",
+    "time": "20 MIN",
+    "href": "/articles/recovering-ai-memory-and-vector-stores/",
+    "scheduledDate": "2026-11-13",
+    "verifiedDate": "10 NOV 2026",
+    "note": "013",
+    "scenarios": ["AI memory poisoning", "Vector-store compromise"],
+    "technologies": ["Vector stores", "Agent memory", "RAG", "Recovery automation"],
+    "phases": ["Evidence", "Eradication", "Recovery", "Validation"],
+    "artifactTypes": ["Field note", "Architecture", "Recovery manifest", "Test matrix", "Worksheet"]
   }
 ]
