@@ -6,9 +6,11 @@ source. Preserve old entries when adding new ones. Drafts and full approval
 responses are retained in the private `leandroer/lrinfosec-operations` repository.
 
 `catalog.json` drives both the article index and homepage latest feature. Dates
-use America/New_York. Scheduled publication uses `date <= today`, so an outage
-does not lose a release. Only explicitly approved content may be staged here;
-unapproved drafts belong in the private repository.
+use America/New_York. Future releases use an offset-qualified `publishAt`, while
+older records retain date-only compatibility. A release becomes eligible only
+at or after its authorized timestamp, and overdue releases remain eligible so
+an outage does not lose them. Only explicitly approved content may be staged
+here; unapproved drafts belong in the private repository.
 
 The Pages workflow validates source hashes, runs regression tests and the
 production dependency audit, prepares due routes, builds, and checks links.

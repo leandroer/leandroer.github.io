@@ -63,6 +63,7 @@
       "slug": "recovering-ai-memory-and-vector-stores",
       "title": "Recovery criteria for compromised AI memory and vector stores",
       "date": "2026-11-13",
+      "publishAt": "2026-11-13T09:00:00-05:00",
       "note": "013",
       "description": "Rebuild compromised vector and memory state from trusted sources, test it with measurable gates, and release it through canaries with proven rollback.",
       "approvedAt": "2026-11-10",
