@@ -12,9 +12,11 @@ from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parents[1]
 
-def approved_due(root=ROOT, today=None):
+def approved_due(root=ROOT, today=None, now=None):
     manifest = json.loads((root / 'publishing/approved.json').read_text())
-    today = today or datetime.now(ZoneInfo('America/New_York')).date().isoformat()
+    current = now or datetime.now(ZoneInfo('America/New_York'))
+    if current.tzinfo is None:
+        raise ValueError('Publication time comparison requires a timezone')
     due, future = [], []
     seen = set()
     for article in manifest['articles']:
@@ -28,9 +30,16 @@ def approved_due(root=ROOT, today=None):
         if not article.get('approval', {}).get('turnId'):
             raise ValueError(f'{slug}: missing explicit approval record')
         datetime.strptime(article['date'], '%Y-%m-%d')
+        publish_at = article.get('publishAt')
+        release = None
+        if publish_at:
+            release = datetime.fromisoformat(publish_at)
+            if release.tzinfo is None or release.astimezone(ZoneInfo('America/New_York')).date().isoformat() != article['date']:
+                raise ValueError(f'{slug}: invalid publication timestamp')
         if hashlib.sha256(source.read_bytes()).hexdigest() != article['sourceSHA256']:
             raise ValueError(f'{slug}: approved source changed; review and renew approval hash')
-        (due if article['date'] <= today else future).append(article)
+        eligible = release <= current.astimezone(release.tzinfo) if release else article['date'] <= (today or current.date().isoformat())
+        (due if eligible else future).append(article)
     return due, future
 
 def main():

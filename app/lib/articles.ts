@@ -8,6 +8,7 @@ export type ArticleRecord = {
   time: string;
   href: string;
   publishDate: string;
+  publishAt?: string;
   scheduledDate: string;
   verifiedDate: string;
   note: string;
@@ -18,6 +19,7 @@ export type ArticleRecord = {
 };
 
 export function publishedArticles() {
+  const now = Date.now();
   const today = new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
-  return (catalog as ArticleRecord[]).filter(article => article.publishDate <= today).sort((a,b) => b.publishDate.localeCompare(a.publishDate) || b.scheduledDate.localeCompare(a.scheduledDate));
+  return (catalog as ArticleRecord[]).filter(article => article.publishAt ? Date.parse(article.publishAt) <= now : article.publishDate <= today).sort((a,b) => b.publishDate.localeCompare(a.publishDate) || b.scheduledDate.localeCompare(a.scheduledDate));
 }

@@ -6,6 +6,7 @@ from pathlib import Path
 import tempfile
 import unittest
 from unittest.mock import patch
+from datetime import datetime
 
 def module(name, filename):
     spec = importlib.util.spec_from_file_location(name, Path(__file__).with_name(filename))
@@ -52,6 +53,25 @@ class PublicationTests(unittest.TestCase):
                 (root / 'publishing/approved.json').write_text(json.dumps(manifest))
                 with self.assertRaises(ValueError):
                     prepare.approved_due(root=root, today='2027-01-01')
+
+    def test_exact_publication_timestamp_blocks_early_release(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / 'app/articles/timed/page.tsx'
+            source.parent.mkdir(parents=True)
+            source.write_text('approved content')
+            article = {
+                'slug':'timed', 'date':'2026-11-13', 'publishAt':'2026-11-13T09:00:00-05:00',
+                'source':source.relative_to(root).as_posix(), 'path':'/articles/timed/',
+                'approval':{'turnId':'explicit-approval'},
+                'sourceSHA256':hashlib.sha256(source.read_bytes()).hexdigest(),
+            }
+            (root / 'publishing').mkdir()
+            (root / 'publishing/approved.json').write_text(json.dumps({'articles':[article]}))
+            before = datetime.fromisoformat('2026-11-13T08:59:59-05:00')
+            on_time = datetime.fromisoformat('2026-11-13T09:00:00-05:00')
+            self.assertEqual(prepare.approved_due(root=root, now=before)[1][0]['slug'], 'timed')
+            self.assertEqual(prepare.approved_due(root=root, now=on_time)[0][0]['slug'], 'timed')
 
     def test_missing_approved_article_rejected(self):
         with patch.object(verify, 'fetch', return_value='{"commit":"new","articles":[]}'):
