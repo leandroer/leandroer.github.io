@@ -1,0 +1,96 @@
+.format {
+  margin-top: 1.5rem;
+  font-size: 1rem;
+}
+
+.jumpLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  margin-top: 1.5rem;
+}
+
+.jumpLinks a {
+  border: 1px solid #7890aa;
+  padding: .65rem 1rem;
+  font-size: .95rem;
+}
+
+.jumpLinks a:hover {
+  background: #ffffff17;
+}
+
+.content {
+  max-width: 960px;
+  line-height: 1.65;
+}
+
+.reading {
+  max-width: 75ch;
+}
+
+.cards {
+  display: grid;
+  gap: .8rem;
+  margin: 1.25rem 0 2rem;
+}
+
+.cards details,
+.roles > div,
+.criteria > div {
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.cards summary {
+  cursor: pointer;
+  padding: .9rem 1rem;
+  font-weight: 700;
+}
+
+.cards summary span {
+  margin-right: .45rem;
+  color: var(--muted);
+}
+
+.cards details > div {
+  padding: 0 1rem .5rem;
+}
+
+.roles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+  gap: .75rem;
+  margin: 1.5rem 0;
+}
+
+.roles > div,
+.criteria > div {
+  padding: .85rem 1rem;
+}
+
+.roles dt,
+.criteria dt {
+  font-weight: 700;
+}
+
+.roles dd,
+.criteria dd {
+  margin: .25rem 0 0;
+}
+
+.criteria {
+  display: grid;
+  gap: .65rem;
+}
+
+.scope {
+  border-left: 3px solid var(--orange);
+  padding: .75rem 1rem;
+  background: var(--paper);
+}
+
+.sources a {
+  text-decoration: underline;
+  text-underline-offset: .15em;
+}
