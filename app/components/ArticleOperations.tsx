@@ -19,6 +19,9 @@ export function ArticleNavigation({ slug }: { slug: string }) {
   return <details className="article-navigation" open>
     <summary>Navigate this field note</summary>
     <nav aria-label="Article sections">{item.sections.map((section, index) => <a href={`#${section.id}`} key={section.id}><span>{String(index + 1).padStart(2, "0")}</span>{section.title}</a>)}</nav>
+    {slug === "recovering-ai-memory-and-vector-stores" && (
+      <a className="article-top-link" href="/resources/ai-memory-poisoning-recovery-tabletop/">Run the recovery tabletop</a>
+    )}
     <a className="article-top-link" href="#top">Back to top ↑</a>
   </details>;
 }
